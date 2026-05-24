@@ -1,0 +1,20 @@
+[
+    {
+        "id": "logistic_regression",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Logistic_regression"
+        ]
+    },
+    {
+        "id": "clustering",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Cluster_analysis"
+        ]
+    },
+    {
+        "id": "linear_regression",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Linear_regression"
+        ]
+    }
+]

@@ -4,8 +4,9 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
-with open("./data/topics.json", "r") as f:
+with open(r"D:\LLM_Deeplearning.ai\AgeT-Agentic-Tutor\aget_api\src\data\topics.json", "r") as f:
     topics_data = json.load(f)
+
 
 
 class TopicsExtract(BaseModel):
@@ -69,7 +70,7 @@ class TopicsFactory:
         """
 
         id_lower = id.lower()
-        
+
         return Topics(
             id=id_lower,
             name=topics_data[id_lower]
