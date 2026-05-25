@@ -90,7 +90,7 @@ kiwisolver==1.4.8
 kubernetes==33.1.0
 langchain==0.3.25
 langchain-chroma==0.2.4
-langchain-community==0.3.25
+langchain-community>=0.3.17
 langchain-core>=0.3.34
 langchain-google-genai==2.1.5
 langchain-groq>=0.2.4
@@ -274,4 +274,5 @@ datasketch>=1.6.5
 wikipedia-api
 spacy
 rank-bm25
-
+gliner
+torch
