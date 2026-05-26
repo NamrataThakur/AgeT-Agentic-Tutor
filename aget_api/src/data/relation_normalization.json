@@ -1,0 +1,59 @@
+{
+
+    "optimized_using": [
+        "optimized using",
+        "trained using",
+        "estimated using",
+        "fit using"
+    ],
+
+    "uses": [
+        "uses",
+        "utilizes",
+        "employs"
+    ],
+
+    "represents": [
+        "represents",
+        "denotes",
+        "corresponds to"
+    ],
+
+    "models": [
+        "models",
+        "predicts",
+        "describes"
+    ],
+
+    "derived_from": [
+        "derived from",
+        "computed from",
+        "obtained from"
+    ],
+
+    "minimizes": [
+        "minimizes",
+        "reduces"
+    ],
+
+    "evaluates": [
+        "evaluates",
+        "measures",
+        "tests"
+    ],
+
+    "depends_on": [
+        "depends on",
+        "based on"
+    ],
+
+    "generalizes": [
+        "generalizes",
+        "extends"
+    ],
+
+    "approximates": [
+        "approximates",
+        "estimates"
+    ]
+}
