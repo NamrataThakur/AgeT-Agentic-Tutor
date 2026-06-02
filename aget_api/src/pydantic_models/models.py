@@ -141,7 +141,7 @@ class Relation(BaseModel):
         relation (RELATION_TYPES): 
         target (str): Target Entity Name
         explanation (str): Short reasoning
-        edge_type (str): Type of edge, either 'semantic' or ''
+        edge_type (str): Type of edge, either 'semantic' or 'contextual'
         confidence (float): Confidence of the edge
 
     """
@@ -150,7 +150,7 @@ class Relation(BaseModel):
     relation : RELATION_TYPES
     target : str = Field(description="Target Entity Name")
     explanation: str = Field(description="Short reasoning")
-    edge_type : str = Field(description="Type of edge, either 'semantic' or ''")
+    edge_type : str = Field(description="Type of edge, either 'semantic' or 'contextual'")
     confidence : float = Field(ge=0.0, le=1.0)
 
 
@@ -166,3 +166,92 @@ class RelationExtractBatch(BaseModel):
 
 
 
+
+class Entity(BaseModel):
+    """A class representing entities present in each each chunks.
+
+    Args:
+        text (str): Raw Name of the entity
+        normalized_text (str): Normalized Name of the entity
+        label (str): Label type
+        score (float): score given by gliner model
+
+    """
+    text : str = Field(description="Raw Name of the entity")
+    normalized_text : str = Field(description="Normalized Name of the entity")
+    label : str = Field("Label type")
+    score : float = Field(ge=0.0, le=1.0)
+
+
+class Embeddings(BaseModel):
+    """A class representing embeddings of a chunk.
+
+    Args:
+        embeddings : (List[float]) : embeddings
+
+    """
+
+    embeddings : List[float]
+
+
+class Chunk(BaseModel):
+    """A class representing each chunks present in the overall document extracted.
+
+    Args:
+        chunk_id (str): Unique Identifier of the chunk
+        document_id (str) : Topic ID
+        text (str): Raw text present in the chunk
+        embedding (List[float]): Embeddings
+        entities (List[Entity]): Unique entities present in the chunk
+
+    """
+    chunk_id : str = Field(description="Unique Identifier of the chunk")
+    document_id : str = Field(description="Topic ID")
+    text : str = Field(description="Raw text present in the chunk")
+    embedding : Embeddings
+    entities : List[Entity] 
+
+
+class ChunkBatch(BaseModel):
+    """A class representing all Chunk present in a document.
+
+    Args:
+        chunk_batch : (List[Chunk]) : list of class Chunk Objects
+
+    """
+
+    chunk_batch : List[Chunk]
+
+
+class RelationChunk(BaseModel):
+    """A class representing relations to be extracted from each chunks.
+
+    Args:
+        source (str): Source Entity Name
+        relation (RELATION_TYPES): 
+        target (str): Target Entity Name
+        explanation (str): Short reasoning
+        edge_type (str): Type of edge, either 'semantic' or 'contextual'
+        weight (float): Weight of the edge
+
+    """
+    
+    source : str = Field(description="Source Entity Name")
+    relation : RELATION_TYPES
+    target : str = Field(description="Target Entity Name")
+    explanation: str = Field(description="Short reasoning")
+    edge_type : str = Field(description="Type of edge, either 'semantic' or 'contextual'")
+    weight : float = Field(ge=0.0, le=1.0)
+
+
+class RelationBatch(BaseModel):
+    """A class representing output of the relation extractor LLM call.
+
+    Args:
+        chunk_id (str) : Unique Identifier of the chunk
+        relation : (List[Relation]) : list of class Relation Objects
+
+    """
+
+    chunk_id : str = Field(description="Unique Identifier of the chunk")
+    relation : List[RelationChunk]
