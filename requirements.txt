@@ -276,3 +276,4 @@ spacy
 rank-bm25
 gliner
 torch
+huggingface_hub[hf_xet]
