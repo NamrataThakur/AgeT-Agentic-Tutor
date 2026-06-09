@@ -5,6 +5,17 @@ from pydantic import BaseModel
 
 Models = TypeVar("Models", bound=BaseModel)
 
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+MONGO_URI = os.getenv("MONGODB_URI")
+MONGO_APPNAME = os.getenv("MONGO_APPNAME")
+MONGO_DBNAME = os.getenv("MONGO_DBNAME")
+MONGO_CHUNKS_COL = os.getenv("MONGO_CHUNKS_COL")
+MONGO_SEM_CHUNKS_COL = os.getenv("MONGO_SEM_CHUNKS_COL")
+MONGO_ENTITY_REL_COL = os.getenv("MONGO_ENTITY_REL_COL")
+
 
 class MongoDb(Generic[Models]):
     """Class for MongoDB operations, supporting ingestion.
@@ -29,25 +40,23 @@ class MongoDb(Generic[Models]):
 
     def __init__(self):
 
-        #Read the db details from config file:
-        mongo_uri = "mongodb+srv://namratathakur893_db_user:8cXPyWIc5QKI8StB@agetcluster.manxawz.mongodb.net/?appName=AgetCluster"
-        
+        #Read the db details from config file:        
         try:
-            self.db_client = MongoClient(mongo_uri, appname="agetcluster")
+            self.db_client = MongoClient(MONGO_URI, appname=MONGO_APPNAME)
             self.db_client.admin.command("ping")
         except Exception as e:
             print(f"Failed to initialize MongoDBService: {e}")
             raise
 
-        self.db_name = "prod_graphrag"
+        self.db_name = MONGO_DBNAME
         self.db = self.db_client[self.db_name]
 
-        self.chunks_collection= self.db["chunks"]
-        self.chunk_edges_collection = self.db["chunk_entity"]
-        self.entity_edges_collection = self.db["entity_relation"]
+        self.chunks_collection= self.db[MONGO_CHUNKS_COL]
+        self.chunk_edges_collection = self.db[MONGO_SEM_CHUNKS_COL]
+        self.entity_edges_collection = self.db[MONGO_ENTITY_REL_COL]
 
         print(
-            f"Connected to MongoDB instance:\n URI: {mongo_uri}\n Database: {self.db_name}\n "
+            f"Connected to MongoDB instance:\n URI: {MONGO_URI}\n Database: {self.db_name}\n "
         )
 
 
