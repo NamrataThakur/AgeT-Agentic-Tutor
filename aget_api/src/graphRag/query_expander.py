@@ -1,12 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from typing import List
-from langchain_core.documents import Document
-import json
 import warnings
-import re
-from rapidfuzz import fuzz
 
 warnings.filterwarnings("ignore")
 
@@ -47,7 +42,7 @@ class QueryExpander:
                                                     )
         
         #These chunks may contain many relations, some containing the query term, others dont. Cursor will return the entire document
-        #So need to select only those relations where the query term is present in either source or target node and the edge weight mets the threshold weight criteria:
+        #So need to select only those relations where the query term is present in either source or target node and the edge weight meets the threshold weight criteria:
         for chunk in cursor:
             for rel in chunk["relation"]:
 
