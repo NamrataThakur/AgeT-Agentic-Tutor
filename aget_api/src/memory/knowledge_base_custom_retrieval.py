@@ -22,7 +22,7 @@ if parent_dir not in sys.path:
 
 from graphRag.retriever import Retriever
 
-class LongTermMemoryCustomRetrieval:
+class CustomRetrieval:
     def __init__(self,  db : MongoClient,  model_type = 'openai', k : int= 20, similarity_threshold : float = 0.3):
         self.db = db
         self.ret = Retriever(embed_model_type=model_type, db = self.db)
