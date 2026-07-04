@@ -12067,5 +12067,897 @@
             "last_asked_at": null
         },
         "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "6b936236-e360-4643-becc-211da4f2944b",
+        "question": {
+            "question": "What is the purpose of logistic regression in machine learning?",
+            "reference_answer": {
+                "answer_text": "Logistic regression is used for binary classification tasks in supervised machine learning, such as identifying spam emails or diagnosing diseases based on patient test results.",
+                "key_points": [
+                    "Used for binary classification tasks",
+                    "Transforms input features into probability values",
+                    "Utilizes the logistic function"
+                ]
+            },
+            "primary_concept": "logistic regression",
+            "secondary_concepts": [
+                "machine learning",
+                "binary classification",
+                "sigmoid function"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "75a365f6-42dd-4ea5-8612-dda493e68bca",
+        "question": {
+            "question": "Explain the difference between null deviance and model deviance in logistic regression.",
+            "reference_answer": {
+                "answer_text": "Null deviance compares a model with only the intercept to the saturated model, while model deviance compares a model with predictors to the saturated model.",
+                "key_points": [
+                    "Null deviance compares intercept-only model",
+                    "Model deviance compares model with predictors",
+                    "Both compared to saturated model"
+                ]
+            },
+            "primary_concept": "deviance",
+            "secondary_concepts": [
+                "null deviance",
+                "model deviance",
+                "saturated model"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Model Evaluation",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "dc3917df-1a4c-43b5-bea0-b1a824a0fb25",
+        "question": {
+            "question": "How does logistic regression handle binary outcomes using the logistic function?",
+            "reference_answer": {
+                "answer_text": "Logistic regression uses the logistic function to accurately model the probability of binary outcomes by mapping real-valued numbers to values between 0 and 1.",
+                "key_points": [
+                    "Maps real numbers to probability values",
+                    "Models binary outcomes accurately",
+                    "Utilizes the logistic function"
+                ]
+            },
+            "primary_concept": "logistic regression",
+            "secondary_concepts": [
+                "logistic function",
+                "binary outcomes",
+                "probability values"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "a4af0e4f-f1c5-4dc7-8a42-d001460cf887",
+        "question": {
+            "question": "What is the significance of the odds ratio in logistic regression compared to linear regression?",
+            "reference_answer": {
+                "answer_text": "In logistic regression, the odds ratio represents the effect of a predictor on the exponential function of the regression coefficient, unlike linear regression where t tests are used to assess the significance of regression coefficients.",
+                "key_points": [
+                    "Odds ratio assesses predictor effect",
+                    "Different from t tests in linear regression",
+                    "Measures significance of regression coefficients"
+                ]
+            },
+            "primary_concept": "logistic regression",
+            "secondary_concepts": [
+                "odds ratio",
+                "linear regression",
+                "regression coefficients"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "99c337fd-0d3a-448b-9d31-40f94df72f59",
+        "question": {
+            "question": "Describe the role of the logistic function in logistic regression for binary classification tasks.",
+            "reference_answer": {
+                "answer_text": "The logistic function transforms a linear combination of input features into a probability value between 0 and 1, making it suitable for binary classification tasks in logistic regression.",
+                "key_points": [
+                    "Transforms input features into probability values",
+                    "Maps real numbers to 0-1 interval",
+                    "Essential for binary classification tasks"
+                ]
+            },
+            "primary_concept": "logistic function",
+            "secondary_concepts": [
+                "binary classification",
+                "probability values",
+                "input features"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Uncategorized",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "cc5190fe-6e65-46d0-b54d-93ec559bddc2",
+        "question": {
+            "question": "How does logistic regression handle unbalanced data in model estimation?",
+            "reference_answer": {
+                "answer_text": "Logistic regression can be estimated on unbalanced data, providing correct coefficient estimates even without randomly sampled data, allowing for the evaluation of effects of independent variables on outcomes.",
+                "key_points": [
+                    "Estimates coefficients on unbalanced data",
+                    "Correct coefficient estimates without random sampling",
+                    "Evaluates effects of independent variables"
+                ]
+            },
+            "primary_concept": "logistic regression",
+            "secondary_concepts": [
+                "unbalanced data",
+                "coefficient estimates",
+                "independent variables"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "dd8263c9-4325-4b07-ab8e-e45445e06f4e",
+        "question": {
+            "question": "What is the main difference between logistic regression and linear regression in terms of the type of dependent variables they predict?",
+            "reference_answer": {
+                "answer_text": "Logistic regression predicts dependent variables that belong to a limited number of categories, while linear regression predicts continuous dependent variables.",
+                "key_points": [
+                    "Logistic regression predicts categorical variables",
+                    "Linear regression predicts continuous variables",
+                    "Difference in type of dependent variables predicted"
+                ]
+            },
+            "primary_concept": "logistic regression",
+            "secondary_concepts": [
+                "dependent variables",
+                "categorical variable",
+                "linear regression"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "1fb44f4e-3567-4b97-8b5c-fce5aca92479",
+        "question": {
+            "question": "Explain the significance of the deviance measure in logistic regression for assessing model fit.",
+            "reference_answer": {
+                "answer_text": "Deviance in logistic regression measures the error between the model fit and outcome data, with a chi-squared distribution in large datasets, allowing for significance testing of explanatory variables.",
+                "key_points": [
+                    "Measures error between model fit and data",
+                    "Chi-squared distribution in large datasets",
+                    "Significance testing of explanatory variables"
+                ]
+            },
+            "primary_concept": "deviance",
+            "secondary_concepts": [
+                "model fit",
+                "chi-squared distribution",
+                "explanatory variables"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Model Evaluation",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "2a018802-4519-48bb-93a6-7a3261b899e5",
+        "question": {
+            "question": "How does logistic regression use the logistic model to estimate the log-odds of an event based on independent variables?",
+            "reference_answer": {
+                "answer_text": "Logistic regression models the log-odds of an event as a linear combination of independent variables, providing a statistical framework for predicting binary outcomes.",
+                "key_points": [
+                    "Estimates log-odds based on independent variables",
+                    "Models event probability",
+                    "Predicts binary outcomes"
+                ]
+            },
+            "primary_concept": "logistic regression",
+            "secondary_concepts": [
+                "log-odds",
+                "independent variables",
+                "binary outcomes"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 5,
+        "prompt_id": "easy_question_generation",
+        "question_id": "e3da4db5-3950-4398-9519-eb7b23bd675d",
+        "question": {
+            "question": "What is the primary role of logistic regression in supervised machine learning tasks?",
+            "reference_answer": {
+                "answer_text": "Logistic regression is widely used for binary classification tasks in supervised machine learning, such as spam detection and disease diagnosis, by transforming input features into probability values using the logistic function.",
+                "key_points": [
+                    "Used for binary classification tasks",
+                    "Transforms input features into probability values",
+                    "Widely applied in supervised machine learning"
+                ]
+            },
+            "primary_concept": "logistic regression",
+            "secondary_concepts": [
+                "supervised machine learning",
+                "binary classification",
+                "probability values"
+            ]
+        },
+        "difficulty": "easy",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:42.678000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "cf2c6845-f30a-46b6-800b-d558684b222d",
+        "question": {
+            "question": "Explain the relationship between logistic regression and linear regression in the context of criterion evaluation.",
+            "reference_answer": {
+                "answer_text": "Logistic regression and linear regression are connected through the criterion evaluation process. Linear regression serves as a baseline model for logistic regression, which is used for binary classification tasks. Logistic regression builds upon linear regression by transforming the linear combination of input features into a probability value using the logistic function.",
+                "key_points": [
+                    "Linear regression serves as a baseline model for logistic regression",
+                    "Logistic regression transforms the linear combination of input features into a probability value",
+                    "The logistic function is used in logistic regression for binary classification tasks"
+                ]
+            },
+            "primary_concept": "criterion",
+            "secondary_concepts": [
+                "linear regression",
+                "logistic regression"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Model Fitting and Estimation",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "a31afe48-ae1b-493e-b96b-6c90660abcb6",
+        "question": {
+            "question": "Compare the role of parameter estimation in logistic regression and linear regression models.",
+            "reference_answer": {
+                "answer_text": "Parameter estimation plays a crucial role in both logistic regression and linear regression models. In logistic regression, parameter estimation involves estimating the coefficients to predict probabilities, while in linear regression, parameter estimation is focused on determining the relationship between the independent and dependent variables.",
+                "key_points": [
+                    "Parameter estimation is essential for predicting probabilities in logistic regression",
+                    "Parameter estimation in linear regression focuses on the relationship between variables"
+                ]
+            },
+            "primary_concept": "parameter",
+            "secondary_concepts": [
+                "logistic regression",
+                "linear regression"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Model Fitting and Estimation",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "276694c4-f76b-4875-8310-2f416529b9cf",
+        "question": {
+            "question": "How does the logit function relate to the logit model and logistic regression in the context of probability estimation?",
+            "reference_answer": {
+                "answer_text": "The logit function is fundamental in the logit model, which is used in logistic regression for probability estimation. It converts the linear combination of input features into log-odds, allowing logistic regression to predict the likelihood of binary outcomes.",
+                "key_points": [
+                    "The logit function is essential in the logit model for probability estimation",
+                    "Logistic regression uses the logit model to predict the likelihood of binary outcomes"
+                ]
+            },
+            "primary_concept": "logit function",
+            "secondary_concepts": [
+                "logit model",
+                "logistic regression"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "2d5da140-ec45-4e59-8392-1f1a1fda5618",
+        "question": {
+            "question": "Explain the significance of the odds parameter in logistic regression and its relationship with the model fitting process.",
+            "reference_answer": {
+                "answer_text": "The odds parameter in logistic regression is crucial for understanding the relationship between the independent variables and the probability of the outcome. It is associated with the model fitting process, where the odds parameter helps in estimating the effects of each independent variable on the outcome.",
+                "key_points": [
+                    "The odds parameter is important for understanding the relationship between variables in logistic regression",
+                    "It plays a key role in estimating the effects of independent variables on the outcome"
+                ]
+            },
+            "primary_concept": "odds",
+            "secondary_concepts": [
+                "logistic regression",
+                "model fitting"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Model Evaluation",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "336b079e-53f6-40e5-bd2d-1cae649606b0",
+        "question": {
+            "question": "How does the logistic distribution impact the estimation process in logistic regression models compared to other distributions?",
+            "reference_answer": {
+                "answer_text": "The logistic distribution is specifically used in logistic regression models for probability estimation. Unlike other distributions, the logistic distribution provides a symmetric and standardized approach to modeling probabilities, making it suitable for binary classification tasks in logistic regression.",
+                "key_points": [
+                    "The logistic distribution is used for probability estimation in logistic regression",
+                    "It offers a symmetric and standardized approach for modeling probabilities in binary classification tasks"
+                ]
+            },
+            "primary_concept": "logistic distribution",
+            "secondary_concepts": [
+                "logistic regression",
+                "probability estimation"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Probability Distributions in Logistic Regression",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "b54f1794-0569-4f5c-96d7-7de07b861622",
+        "question": {
+            "question": "Discuss the connection between the closed-form expression and model fitting in the context of logistic regression.",
+            "reference_answer": {
+                "answer_text": "The closed-form expression is related to model fitting in logistic regression as it provides a mathematical representation of the model's parameters. Model fitting involves estimating these parameters to optimize the model's performance and accuracy in predicting probabilities for binary outcomes.",
+                "key_points": [
+                    "The closed-form expression represents the model's parameters in logistic regression",
+                    "Model fitting aims to estimate these parameters for accurate probability prediction"
+                ]
+            },
+            "primary_concept": "closed-form expression",
+            "secondary_concepts": [
+                "model fitting",
+                "logistic regression"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Uncategorized",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "9c379066-a7ca-466f-98e8-4ca10526292a",
+        "question": {
+            "question": "Explain the role of the dependent variable in logistic regression and its connection to the logit model for probability estimation.",
+            "reference_answer": {
+                "answer_text": "The dependent variable in logistic regression is the outcome variable being predicted. It is closely linked to the logit model, which transforms the linear combination of input features into log-odds to estimate the probability of the dependent variable belonging to a specific category.",
+                "key_points": [
+                    "The dependent variable is the outcome variable in logistic regression",
+                    "The logit model helps estimate the probability of the dependent variable's category"
+                ]
+            },
+            "primary_concept": "dependent variable",
+            "secondary_concepts": [
+                "logistic regression",
+                "logit model"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "9e3ce1b7-fdc2-4481-a5a8-9a78916bb4ff",
+        "question": {
+            "question": "Compare the use of the sigmoid function in logistic regression with other alternative models like the probit model.",
+            "reference_answer": {
+                "answer_text": "The sigmoid function is specifically used in logistic regression to convert the linear combination of input features into probabilities. In contrast, the probit model uses a different sigmoid function to achieve a similar outcome. Both models aim to predict binary outcomes but differ in the choice of the function for probability transformation.",
+                "key_points": [
+                    "The sigmoid function is employed in logistic regression for probability transformation",
+                    "The probit model utilizes a different sigmoid function for similar binary outcome prediction"
+                ]
+            },
+            "primary_concept": "sigmoid function",
+            "secondary_concepts": [
+                "logistic regression",
+                "probit model"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Uncategorized",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "ffd9fcc4-24aa-46a5-a2cd-83239384df07",
+        "question": {
+            "question": "Under what conditions is logistic regression preferred over linear regression for binary classification tasks in machine learning applications?",
+            "reference_answer": {
+                "answer_text": "Logistic regression is preferred over linear regression in machine learning for binary classification tasks due to its ability to model probabilities and predict binary outcomes accurately. Linear regression is unsuitable for binary classification as it predicts continuous values, while logistic regression provides a probabilistic framework for informed decision-making in classifying binary outcomes.",
+                "key_points": [
+                    "Logistic regression is preferred for binary classification due to its probabilistic modeling",
+                    "Linear regression is not suitable for binary classification tasks as it predicts continuous values"
+                ]
+            },
+            "primary_concept": "machine learning",
+            "secondary_concepts": [
+                "logistic regression",
+                "linear regression"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Uncategorized",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 6,
+        "prompt_id": "medium_question_generation",
+        "question_id": "a97d40c7-a197-4952-bd64-0da8a0069a3a",
+        "question": {
+            "question": "Explain the relationship between the multinomial logit model and logistic regression in the context of categorical variable prediction.",
+            "reference_answer": {
+                "answer_text": "The multinomial logit model is connected to logistic regression in predicting outcomes for categorical variables. In logistic regression, the multinomial logit model allows for modeling multiple possible outcomes using different sets of regression coefficients, making it suitable for categorical variable prediction tasks.",
+                "key_points": [
+                    "The multinomial logit model enables modeling of multiple outcomes in logistic regression",
+                    "It extends logistic regression to handle categorical variable prediction tasks"
+                ]
+            },
+            "primary_concept": "multinomial logit model",
+            "secondary_concepts": [
+                "logistic regression",
+                "categorical variable"
+            ]
+        },
+        "difficulty": "medium",
+        "bucket_name": "Uncategorized",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:35:56.245000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 3,
+        "prompt_id": "hard_question_generation",
+        "question_id": "69303b2c-8617-4367-a505-13605d3268ce",
+        "question": {
+            "question": "Explain the relationship between the criterion, linear regression, logistic regression, and the logit model in the context of estimating probabilities.",
+            "reference_answer": {
+                "answer_text": "The criterion is associated with linear regression, which in turn is associated with logistic regression. Logistic regression estimates the parameters of the logit model, which is used to convert log-odds into probabilities. This relationship highlights the progression from defining criteria to estimating probabilities through a series of interconnected models.",
+                "key_points": [
+                    "The criterion is linked to linear regression.",
+                    "Linear regression is connected to logistic regression.",
+                    "Logistic regression estimates the parameters of the logit model.",
+                    "The logit model converts log-odds into probabilities."
+                ]
+            },
+            "primary_concept": "criterion",
+            "secondary_concepts": [
+                "linear regression",
+                "logistic regression",
+                "logit model"
+            ]
+        },
+        "difficulty": "hard",
+        "bucket_name": "Model Fitting and Estimation",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:36:05.299000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 3,
+        "prompt_id": "hard_question_generation",
+        "question_id": "de0ef0d1-c362-4d78-827a-c44fe6621305",
+        "question": {
+            "question": "How does logistic regression play a fundamental role in machine learning and its association with the logit function and the Bernoulli distribution?",
+            "reference_answer": {
+                "answer_text": "Logistic regression is crucial in machine learning for binary classification tasks. It utilizes the logit function to transform input features into probabilities. The logit function is the natural parameter for the Bernoulli distribution, making it the simplest way to convert real numbers to probabilities in logistic regression.",
+                "key_points": [
+                    "Logistic regression is essential in machine learning for binary classification.",
+                    "The logit function transforms input features into probabilities.",
+                    "The logit function is the natural parameter for the Bernoulli distribution."
+                ]
+            },
+            "primary_concept": "machine learning",
+            "secondary_concepts": [
+                "logistic regression",
+                "logit function",
+                "Bernoulli distribution"
+            ]
+        },
+        "difficulty": "hard",
+        "bucket_name": "Uncategorized",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:36:05.299000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 3,
+        "prompt_id": "hard_question_generation",
+        "question_id": "8addf405-2543-4879-9e5b-9817f4e7f98d",
+        "question": {
+            "question": "Discuss the significance of the null deviance and model deviance in logistic regression models and their relationship to predictor models.",
+            "reference_answer": {
+                "answer_text": "The null deviance compares models with only the intercept to the saturated model, while the model deviance compares models with predictors to the saturated model. These deviances provide a baseline for evaluating predictor models in logistic regression, highlighting the improvement gained by adding predictors and the significance of the model's fit.",
+                "key_points": [
+                    "Null deviance compares intercept-only models to the saturated model.",
+                    "Model deviance compares predictor models to the saturated model.",
+                    "Deviances serve as baselines for evaluating predictor models."
+                ]
+            },
+            "primary_concept": "deviance",
+            "secondary_concepts": [
+                "null deviance",
+                "model deviance",
+                "predictor models"
+            ]
+        },
+        "difficulty": "hard",
+        "bucket_name": "Model Evaluation",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:36:05.299000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 3,
+        "prompt_id": "hard_question_generation",
+        "question_id": "48a59e42-624a-4956-abf9-e605ce1786a6",
+        "question": {
+            "question": "Explain the role of the logistic function in logistic regression and its ability to convert real numbers into probabilities. How does this function differ from linear least squares in terms of model fitting?",
+            "reference_answer": {
+                "answer_text": "The logistic function in logistic regression converts real numbers into probabilities, providing a probabilistic framework for decision-making. Unlike linear least squares, logistic regression by maximum-likelihood estimation does not have a closed-form expression, making it distinct in model fitting approaches.",
+                "key_points": [
+                    "The logistic function converts real numbers to probabilities in logistic regression.",
+                    "Logistic regression provides a probabilistic framework for decision-making.",
+                    "Logistic regression by MLE lacks a closed-form expression unlike linear least squares."
+                ]
+            },
+            "primary_concept": "logistic function",
+            "secondary_concepts": [
+                "logistic regression",
+                "probabilistic framework",
+                "model fitting"
+            ]
+        },
+        "difficulty": "hard",
+        "bucket_name": "Uncategorized",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:36:05.299000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 3,
+        "prompt_id": "hard_question_generation",
+        "question_id": "11c491d8-0925-4c95-829b-7f59a0530dae",
+        "question": {
+            "question": "How does logistic regression differ from linear regression in terms of predicting binary outcomes and the significance of regression coefficients in each model?",
+            "reference_answer": {
+                "answer_text": "Logistic regression predicts binary outcomes using the log-odds of an event as a linear combination of independent variables. In contrast, linear regression predicts continuous outcomes. The regression coefficients in logistic regression represent the change in logit for each unit change in the predictor, unlike linear regression where they represent the change in the criterion for each unit change in the predictor.",
+                "key_points": [
+                    "Logistic regression predicts binary outcomes using log-odds.",
+                    "Linear regression predicts continuous outcomes.",
+                    "Regression coefficients in logistic regression represent changes in logit."
+                ]
+            },
+            "primary_concept": "logistic regression",
+            "secondary_concepts": [
+                "linear regression",
+                "binary outcomes",
+                "regression coefficients"
+            ]
+        },
+        "difficulty": "hard",
+        "bucket_name": "Logistic Regression Concepts",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:36:05.299000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
+    },
+    {
+        "topic": "logistic_regression",
+        "prompt_version": 3,
+        "prompt_id": "hard_question_generation",
+        "question_id": "2d118cf3-26ea-4c76-bb14-5ac97734d886",
+        "question": {
+            "question": "Discuss the relationship between the Trauma and Injury Severity Score (TRISS) and logistic regression, highlighting the use of logistic regression in predicting mortality in injured patients.",
+            "reference_answer": {
+                "answer_text": "The TRISS, used to predict mortality in injured patients, was developed using logistic regression. This exemplifies the application of logistic regression in medical fields for predicting outcomes such as mortality. Logistic regression is a valuable tool for assessing severity and predicting risks in various medical scenarios.",
+                "key_points": [
+                    "TRISS was developed using logistic regression for predicting mortality.",
+                    "Logistic regression is widely used in medical fields for outcome prediction.",
+                    "Logistic regression aids in assessing severity and predicting risks in medical contexts."
+                ]
+            },
+            "primary_concept": "Trauma and Injury Severity Score (TRISS)",
+            "secondary_concepts": [
+                "logistic regression",
+                "medical prediction",
+                "mortality"
+            ]
+        },
+        "difficulty": "hard",
+        "bucket_name": "Uncategorized",
+        "generator_version": "gpt-5.4-mini",
+        "created_at": "2026-07-04 08:36:05.299000",
+        "usage": {
+            "times_asked": 0,
+            "last_asked_at": null,
+            "correct_count": 0,
+            "wrong_count": 0,
+            "average_score": 0.0
+        },
+        "semantic_neighbours": []
     }
 ]
