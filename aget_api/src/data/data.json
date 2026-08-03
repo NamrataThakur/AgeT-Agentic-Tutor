@@ -16,5 +16,47 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Linear_regression"
         ]
+    },
+    {
+        "id": "attention",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Attention_(machine_learning)"
+        ]
+    },
+    {
+        "id": "transformer",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Transformer_(deep_learning)"
+        ]
+    },
+    {
+        "id": "neural_network",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Neural_network_(machine_learning)"
+        ]
+    },
+    {
+        "id": "decision_tree",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Decision_tree_learning"
+        ]
+    },
+    {
+        "id": "random_forest",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Random_forest"
+        ]
+    },
+    {
+        "id": "gradient_boosting",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gradient_boosting"
+        ]
+    },
+    {
+        "id": "cnn",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Convolutional_neural_network"
+        ]
     }
 ]
