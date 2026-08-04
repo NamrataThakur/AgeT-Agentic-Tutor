@@ -110,11 +110,12 @@ EASY_QUESTION_GENERATION_SYSTEM_PROMPT = """
                 - The primary concept and every secondary concept MUST be selected exactly from the supplied "Available Entities".
                 - Use the entity names exactly as provided.
                 - Assign exactly one primary concept.
-                - Assign zero or more secondary concepts that naturally support the primary concept.
+                - Assign one or more secondary concepts that naturally support the primary concept.
                 - Take the concepts ONLY from the given entities present in the section "Available Entities".
                 - DO NOT invent concepts that are not present in the "Available Entities".
 
             Secondary concepts should represent important concepts required to answer the question. Prefer concepts from the supplied "Available Entities" whenever appropriate, but additional descriptive concepts are allowed if they better capture the semantics.
+            Each question MUST have atleast one primary concept.
 
             ------------------------------------------------------------
             Question Quality:
@@ -165,6 +166,21 @@ EASY_QUESTION_GENERATION_SYSTEM_PROMPT = """
                 - Explains the logistic function and how it maps values and predicts binary classes.
 
             
+            ------------------------------------------------------------
+            Quality Checklist
+            ------------------------------------------------------------
+
+            Before finalizing each question, verify that:
+
+            - The question uses a unique primary concept.
+            - The question MUST have a primary concept and atleast one seconday concept.
+            - The primary concept and every secondary concept MUST be selected exactly from the supplied "Available Entities".
+            - The reference answer explicitly explains the use of the primary and secondary concept.
+            - The question should evaluate a different aspect of the topic.
+
+            Only output questions that satisfy all of the above.
+
+
             ------------------------------------------------------------
             Output Requirements:
             ------------------------------------------------------------
