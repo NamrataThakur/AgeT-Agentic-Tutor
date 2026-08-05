@@ -43,13 +43,16 @@ class QuestionBankSave:
                                                     {
                                                         "_id" : 0,
                                                         "topic" : 1,
+                                                        "question_id" : 1,
                                                         "question" : 1,
                                                         "difficulty" : 1,
                                                         "generator_version" : 1,
                                                         "created_at" : 1,
                                                         "prompt_version" : 1,
                                                         "bucket_name" : 1, 
-                                                        "prompt_id" : 1
+                                                        "prompt_id" : 1,
+                                                        "usage" : 1,                                                    
+                                                        "semantic_neighbours" : 1
                                                     }
                                                 )
         
@@ -62,7 +65,7 @@ class QuestionBankSave:
             json.dump(qs_bank, f, indent=4)
 
 
-if __name__ == "__main__":
-    db = MongoDb()
-    qs_bank = QuestionBankSave(db=db)
-    qs_bank.save_qs_bank()
+# if __name__ == "__main__":
+#     db = MongoDb()
+#     qs_bank = QuestionBankSave(db=db)
+#     qs_bank.save_qs_bank()

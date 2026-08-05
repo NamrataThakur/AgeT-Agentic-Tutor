@@ -64,7 +64,7 @@ class TopicDetection:
                 
                 
         if len(topic_list) == 0:
-            print("No topic detection yet. Trying Fuzzy Match..!")
+            print("No topic detected yet. Trying Fuzzy Match..!")
             #Fuzzy Match Fallback:
             for k,v in self.topics_data.items():
                 if any([fuzz.partial_ratio(tag, normalized_query) > 60 
