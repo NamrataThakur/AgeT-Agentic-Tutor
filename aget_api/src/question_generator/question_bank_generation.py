@@ -49,7 +49,7 @@ from embeddings.embedders import EmbeddingsCreator
 
 class QuestionGenerator:
     def __init__(self):
-        self.llm = ChatOpenAI(name=settings.MODEL_NAME, temperature=settings.MODEL_TEMPERATURE, 
+        self.llm = ChatOpenAI(name=settings.MODEL_NAME_QS_GEN, temperature=settings.MODEL_TEMPERATURE, 
                         api_key=openai_api_key, max_tokens=settings.MAX_TOKENS, max_retries=settings.MAX_RETRIES)
         self.embedders = EmbeddingsCreator(embed_model_type=settings.MODEL_TYPE)
 
@@ -268,7 +268,7 @@ class QuestionGenerator:
                     "difficulty" : difficulty,
 
 
-                    "generator_version" : settings.MODEL_NAME,
+                    "generator_version" : settings.MODEL_NAME_QS_GEN,
                     "created_at" : datetime.today(),
                     "usage": {"times_asked" : 0, "last_asked_at" : None,
                               "correct_count" : 0, "wrong_count" : 0, "average_score" : 0.00
