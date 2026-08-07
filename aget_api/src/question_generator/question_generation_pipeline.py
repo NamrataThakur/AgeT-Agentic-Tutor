@@ -67,10 +67,10 @@ class QuestionFullGenerationPipeline:
         self.mode = "full"
 
         #Read the parameter values from the settings.py file:
-        self.graph_retrieval = GraphRAGPipeline()
+        self.graph_retrieval = GraphRAGPipeline(db = self.db)
         self.qs_generator = QuestionGenerator()
         self.qs_save = QuestionBankSave(db = self.db)
-        self.llm = ChatOpenAI(name=settings.MODEL_NAME, temperature=settings.MODEL_TEMPERATURE, 
+        self.llm = ChatOpenAI(name=settings.MODEL_NAME_QS_GEN, temperature=settings.MODEL_TEMPERATURE, 
                         api_key=openai_api_key, max_tokens=settings.MAX_TOKENS, max_retries=settings.MAX_RETRIES)
 
 
