@@ -68,7 +68,7 @@ class PromptCreator:
         
 
         prompt_metadata = {
-                            "version" : 4,
+                            "version" : 5,
                             "name" : "Easy Question Prompt",
                             "prompt_id": "easy_question_generation",
                             "created_at" : datetime.today(),
@@ -90,7 +90,7 @@ class PromptCreator:
                         "system_prompt": system_prompt_template,
                         "user_prompt": user_prompt_template,
                         "prompt_hash": prompt_hash,
-                        "prompt_version": 4,
+                        "prompt_version": 5,
                         "difficulty" : "easy"
                     }
         
@@ -126,7 +126,7 @@ class PromptCreator:
         
 
         prompt_metadata = {
-                            "version" : 3,
+                            "version" : 6,
                             "name" : "Medium Question Prompt",
                             "prompt_id": "medium_question_generation",
                             "created_at" : datetime.today(),
@@ -148,7 +148,7 @@ class PromptCreator:
                         "system_prompt": system_prompt_template,
                         "user_prompt": user_prompt_template,
                         "prompt_hash": prompt_hash,
-                        "prompt_version": 3,
+                        "prompt_version": 6,
                         "difficulty" : "medium"
                     }
         
@@ -182,7 +182,7 @@ class PromptCreator:
         
 
         prompt_metadata = {
-                            "version" : 1,
+                            "version" : 3,
                             "name" : "Hard Question Prompt",
                             "prompt_id": "hard_question_generation",
                             "created_at" : datetime.today(),
@@ -204,7 +204,7 @@ class PromptCreator:
                         "system_prompt": system_prompt_template,
                         "user_prompt": user_prompt_template,
                         "prompt_hash": prompt_hash,
-                        "prompt_version": 1,
+                        "prompt_version": 3,
                         "difficulty" : "hard"
                     }
         
@@ -252,5 +252,5 @@ class PromptCreator:
 if __name__ == "__main__":
     prompt_creator = PromptCreator()
     # easy_prompt = prompt_creator.create_easyQs_prompt()
-    medium_prompt = prompt_creator.create_mediumQs_prompt()
-    # hard_prompt = prompt_creator.create_hardQs_prompt()
+    # medium_prompt = prompt_creator.create_mediumQs_prompt()
+    hard_prompt = prompt_creator.create_hardQs_prompt()
