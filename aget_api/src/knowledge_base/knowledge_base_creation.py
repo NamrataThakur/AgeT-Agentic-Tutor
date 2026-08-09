@@ -25,39 +25,43 @@ from data_models.models import TopicsExtract, Topics, TopicsFactory
 from data_models.chunk import ChunkBatch
 from data_models.entity_relation import RelationAllBatch
 from data_models.chunk_graph import SemanticChunkBatch
+from data_models.knowledge_hash import KnowledgeHashBatch
 from embeddings.embedders import EmbeddingsCreator
 from db.mongo import MongoDb
 from graphRag.graph_builder import GraphBuilder
+from tools.kb_hash_creation import KnowledgeHashCreator
+from config.settings import settings
 
-ENTITY_LABELS = ["statistical concept", "statistical unit",
-    "mathematical concept",
-    "probability concept",
-    "optimization concept",
-    "machine learning concept", "statistical model",
-    "machine learning model", "machine learning variable",
-    "algorithm","mathematical function",
-    "activation function",
-    "loss function",
-    "parameter",
-    "coefficient",
-    "hyperparameter","metric",
-    "statistical metric",
-    "evaluation metric","probability distribution",
-    "optimization algorithm",
-    "objective function",
-    "mathematical expression","statistical transformation",
-    "mathematical transformation"]
+# ENTITY_LABELS = ["statistical concept", "statistical unit",
+#     "mathematical concept",
+#     "probability concept",
+#     "optimization concept",
+#     "machine learning concept", "statistical model",
+#     "machine learning model", "machine learning variable",
+#     "algorithm","mathematical function",
+#     "activation function",
+#     "loss function",
+#     "parameter",
+#     "coefficient",
+#     "hyperparameter","metric",
+#     "statistical metric",
+#     "evaluation metric","probability distribution",
+#     "optimization algorithm",
+#     "objective function",
+#     "mathematical expression","statistical transformation",
+#     "mathematical transformation"]
 
 
 class KnowledgeBaseCreator:
     def __init__(self, model_type : str = "openai"):
         self.info_extract = InformationExtractor()
         self.chunker = ChunkCreator(embed_model_type=model_type)
-        self.entity_extractor = EntityExtractor(labels=ENTITY_LABELS, threshold=0.4)
+        self.entity_extractor = EntityExtractor(labels=settings.ENTITY_LABELS, threshold=0.4)
         self.relation_extractor = RelationExtractor()
         self.embedder = EmbeddingsCreator(embed_model_type=model_type)
         self.db = MongoDb()
         self.graph_builder = GraphBuilder()
+        self.knowledge_hash = KnowledgeHashCreator(db=self.db)
 
     def create_knowledge(self, topics : List[TopicsExtract]):
         
@@ -67,8 +71,10 @@ class KnowledgeBaseCreator:
         #Call ChunkCreator --> List of semantic chunks
         docs_chunks = self.chunker.get_semantic_chunks(documents=topic_gen[1])
         topic_id = topic_gen[0].id
+        source_id = "Wikipedia"
         print(f"Extraction and Chunking pipeline complete for {topic_id}..!")
         print(f"Total semantic chunks created : {len(docs_chunks)}")
+        print(f"Infomation Source : {source_id}")
         print("==================================================================================")
 
         #Get the embeddins for all the chunks:
@@ -97,7 +103,7 @@ class KnowledgeBaseCreator:
 
                 chunk_dict['chunk_id'] = chunk_id
                 chunk_dict['document_id'] = document_id
-                chunk_dict['source_id'] = "Wikipedia"
+                chunk_dict['source_id'] = source_id
                 chunk_dict['embeddings'] = chunk_emb
                 chunk_dict['entities'] = entities['entities']
                 chunk_dict['text'] = chunk_text
@@ -142,8 +148,21 @@ class KnowledgeBaseCreator:
         self.db.ingest_chunk_graph(chunk_graph=semantic_chunk_model.semantic_chunk)
 
         #Create the indexes:
+        print("==================================================================================")
+        print("Index Creation and Hashing in MongoDB Started..!")
+
         self.db.create_indexes()
         self.db.create_vector_indexes()
+
+        #Create the Knowledge Hash:
+        all_topic_hash = self.knowledge_hash.knowledge_hashing_pipeline(source_name=[source_id], topic_name=[topic_id])
+        hash_model = KnowledgeHashBatch.model_validate(obj={"kb_hash_batch" : all_topic_hash})
+        
+        #Store the records to the 'topic_knowledge_hash' Collection
+        self.db.ingest_knowledge_hash(knw_hash=hash_model.kb_hash_batch)
+
+        print("Index Creation and Hashing in MongoDB Completed..!")
+        print("==================================================================================")
 
         #Create and store the networkx graph for semantic_chunk
         self.graph_builder.create_semantic_chunk_graph(chunk_list=semantic_chunk_details)
