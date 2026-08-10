@@ -15,8 +15,8 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
-from pydantic_models.models import TopicsExtract, Topics, TopicsFactory
-from parser import *
+from data_models.models import TopicsExtract, Topics, TopicsFactory
+from ingestion.parser import *
 
 import nest_asyncio
 nest_asyncio.apply()
@@ -53,12 +53,12 @@ class InformationExtractor:
         for topic in progress_bar:
             topic_obj = self.topic_factory.get_topic(topic.id)
 
-            progress_bar.set_postfix_str(f"Topic: {topic_obj.name}")
+            progress_bar.set_postfix_str(f"\nTopic: {topic_obj.name}")
 
             topic_docs = self.extract_docs(topic_obj, topic.urls)
 
             return [topic_obj, topic_docs]
-        
+
 
 
     def extract_docs(self, topic : Topics, extract_urls : list[str]) -> list[Document]:
@@ -72,6 +72,7 @@ class InformationExtractor:
             list[Document]: List of documents extracted for the topic.
         """
 
+        print("\n==================================================================================")
         print("Information Extraction Stage Started ...!")
 
         print(f"Fetching raw html from : {extract_urls}")
@@ -82,6 +83,7 @@ class InformationExtractor:
                                     "AppleWebKit/537.36 (KHTML, like Gecko) "
                                     "Chrome/124.0.0.0 Safari/537.36"
                                     )
+                                    
                                 })
         docs = loader.load()
 
@@ -142,4 +144,3 @@ if __name__ == "__main__":
         ],
     )
     print(docs)
-
