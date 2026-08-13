@@ -21,14 +21,18 @@ if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
 from data_models.models import Topics, TopicsFactory
+from config.settings import settings
 
-#Read this url from a config file:
-with open(r"D:\LLM_Deeplearning.ai\AgeT-Agentic-Tutor\aget_api\src\data\topics.json", "r") as f:
-    topics_data = json.load(f)
+
 
 
 class TopicDetection:
     def __init__(self):
+
+        #Read this url from a config file:
+        with open(settings.TOPIC_NORMALIZATION_JSON_PATH, "r") as f:
+            topics_data = json.load(f)
+
         self.topics_data = topics_data
         self.INTENT_PHRASES = [
                                 "question", "ask", "quiz",
@@ -103,4 +107,5 @@ if __name__ == '__main__':
     topic_ext = TopicDetection()
     topic, message = topic_ext.get_topic(query="ask me on neural network")
     print(topic)
+    print(topic[0].id)
     print(message)
