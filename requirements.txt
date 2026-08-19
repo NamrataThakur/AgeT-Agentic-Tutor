@@ -277,3 +277,4 @@ rank-bm25
 gliner
 torch
 huggingface_hub[hf_xet]
+chainlit==2.11.1
