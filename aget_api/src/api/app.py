@@ -124,8 +124,15 @@ async def on_audio_end():
     
     result = await graph.ainvoke(input=state)
 
+    context = result.get("conversation_context", None)
+
+    if context is None or not context.knowledge_context:
+        qs = result.get("response", "No response")
+    else:
+        qs = context.knowledge_context.question_bank
+
     await cl.Message(
-                content=result.get("topic", "No response")
+                content=str(qs) #result.get("topic", "No response")
             ).send()
 
     # Clear buffer
@@ -153,11 +160,17 @@ async def on_message(message: cl.Message):
         },
     }
 
-    result = await graph.ainvoke(
-        input=state)
+    result = await graph.ainvoke(input=state)
+
+    context = result.get("conversation_context", None)
+
+    if context is None or context.knowledge_context is None:
+        qs = result.get("response", "No response")
+    else:
+        qs = context.knowledge_context.question_bank
 
     await cl.Message(
-        content=result.get("topic", "No response")
+        content=str(qs) #result.get("topic", "No response")
     ).send()
 
     return
