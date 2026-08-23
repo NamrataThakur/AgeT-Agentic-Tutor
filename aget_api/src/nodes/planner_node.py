@@ -21,8 +21,8 @@ class PlannerNode:
         self.planner_agent = PlannerAgent()
         self.planner_policy = PlannerPolicy()
 
-    def execute(self, state : AgentState):
-        print("Reached Planner")
+    async def execute(self, state : AgentState):
+        print("Flow Reached Planner")
 
         session_memory = state["conversation_context"].session_memory
 
@@ -31,9 +31,9 @@ class PlannerNode:
         else:
             execution_result = state["execution_result"]
 
-        allowed_skills = self.planner_policy.get_allowed_skills(session_memory=session_memory, execution_result=execution_result)
+        allowed_skills = await self.planner_policy.get_allowed_skills(session_memory=session_memory, execution_result=execution_result)
 
-        llm_response = self.planner_agent.invoke(state=state, allowed_skills=allowed_skills)
+        llm_response = await self.planner_agent.invoke(state=state, allowed_skills=allowed_skills)
 
         #Assign Action types based on Skill Chosen:
         if llm_response.skill in [AgentSkill.GENERATE_HINT, AgentSkill.GENERATE_EXPLANATION]:
