@@ -1,0 +1,41 @@
+{
+    "retrieved_equations": [
+        {
+            "source": "Model[edit] Graph of a logistic regression curve fitted to the (xm,ym) data. The curve shows the probability of passing an exam versus hours studying. The logistic function is of the form: p ( x ) = 1 1 + e \u2212 ( x \u2212 $$ p(x)={\\frac {1}{1+e^{-(x-\\mu )/s}}} $$ $$ p(\\mu )=1/2 $$ ) and s is a scale parameter. This expression may be rewritten as: p ( x ) = 1 1 + e \u2212 $$ p(x)={\\frac {1}{1+e^{-(\\beta _{0}+\\beta _{1}x)}}} $$ where \u03b2 0 = \u2212 $$ \\beta _{0}=-\\mu /s $$ $$ y=\\beta _{0}+\\beta _{1}x $$ $$ \\beta _{1}=1/s $$ (inverse scale parameter or rate parameter): these are the y-intercept and slope of the log-odds as a function of x.",
+            "relation": "mentions",
+            "target": "p(x)={\\frac{1}{1+e^{-(beta_{0}+beta_{1}x)}}}",
+            "weight": 0.5
+        },
+        {
+            "source": "Model[edit] Graph of a logistic regression curve fitted to the (xm,ym) data. The curve shows the probability of passing an exam versus hours studying. The logistic function is of the form: p ( x ) = 1 1 + e \u2212 ( x \u2212 $$ p(x)={\\frac {1}{1+e^{-(x-\\mu )/s}}} $$ $$ p(\\mu )=1/2 $$ ) and s is a scale parameter. This expression may be rewritten as: p ( x ) = 1 1 + e \u2212 $$ p(x)={\\frac {1}{1+e^{-(\\beta _{0}+\\beta _{1}x)}}} $$ where \u03b2 0 = \u2212 $$ \\beta _{0}=-\\mu /s $$ $$ y=\\beta _{0}+\\beta _{1}x $$ $$ \\beta _{1}=1/s $$ (inverse scale parameter or rate parameter): these are the y-intercept and slope of the log-odds as a function of x.",
+            "relation": "mentions",
+            "target": "p(x)={\\frac{1}{1+e^{-(x-mu)/s}}}",
+            "weight": 0.5
+        },
+        {
+            "source": "Model[edit] Graph of a logistic regression curve fitted to the (xm,ym) data. The curve shows the probability of passing an exam versus hours studying. The logistic function is of the form: p ( x ) = 1 1 + e \u2212 ( x \u2212 $$ p(x)={\\frac {1}{1+e^{-(x-\\mu )/s}}} $$ $$ p(\\mu )=1/2 $$ ) and s is a scale parameter. This expression may be rewritten as: p ( x ) = 1 1 + e \u2212 $$ p(x)={\\frac {1}{1+e^{-(\\beta _{0}+\\beta _{1}x)}}} $$ where \u03b2 0 = \u2212 $$ \\beta _{0}=-\\mu /s $$ $$ y=\\beta _{0}+\\beta _{1}x $$ $$ \\beta _{1}=1/s $$ (inverse scale parameter or rate parameter): these are the y-intercept and slope of the log-odds as a function of x.",
+            "relation": "mentions",
+            "target": "p(mu)=1/2",
+            "weight": 0.5
+        },
+        {
+            "source": "Model[edit] Graph of a logistic regression curve fitted to the (xm,ym) data. The curve shows the probability of passing an exam versus hours studying. The logistic function is of the form: p ( x ) = 1 1 + e \u2212 ( x \u2212 $$ p(x)={\\frac {1}{1+e^{-(x-\\mu )/s}}} $$ $$ p(\\mu )=1/2 $$ ) and s is a scale parameter. This expression may be rewritten as: p ( x ) = 1 1 + e \u2212 $$ p(x)={\\frac {1}{1+e^{-(\\beta _{0}+\\beta _{1}x)}}} $$ where \u03b2 0 = \u2212 $$ \\beta _{0}=-\\mu /s $$ $$ y=\\beta _{0}+\\beta _{1}x $$ $$ \\beta _{1}=1/s $$ (inverse scale parameter or rate parameter): these are the y-intercept and slope of the log-odds as a function of x.",
+            "relation": "mentions",
+            "target": "y=beta_{0}+beta_{1}x",
+            "weight": 0.5
+        },
+        {
+            "source": "Model[edit] Graph of a logistic regression curve fitted to the (xm,ym) data. The curve shows the probability of passing an exam versus hours studying. The logistic function is of the form: p ( x ) = 1 1 + e \u2212 ( x \u2212 $$ p(x)={\\frac {1}{1+e^{-(x-\\mu )/s}}} $$ $$ p(\\mu )=1/2 $$ ) and s is a scale parameter. This expression may be rewritten as: p ( x ) = 1 1 + e \u2212 $$ p(x)={\\frac {1}{1+e^{-(\\beta _{0}+\\beta _{1}x)}}} $$ where \u03b2 0 = \u2212 $$ \\beta _{0}=-\\mu /s $$ $$ y=\\beta _{0}+\\beta _{1}x $$ $$ \\beta _{1}=1/s $$ (inverse scale parameter or rate parameter): these are the y-intercept and slope of the log-odds as a function of x.",
+            "relation": "mentions",
+            "target": "beta_{1}=1/s",
+            "weight": 0.5
+        },
+        {
+            "source": "Model[edit] Graph of a logistic regression curve fitted to the (xm,ym) data. The curve shows the probability of passing an exam versus hours studying. The logistic function is of the form: p ( x ) = 1 1 + e \u2212 ( x \u2212 $$ p(x)={\\frac {1}{1+e^{-(x-\\mu )/s}}} $$ $$ p(\\mu )=1/2 $$ ) and s is a scale parameter. This expression may be rewritten as: p ( x ) = 1 1 + e \u2212 $$ p(x)={\\frac {1}{1+e^{-(\\beta _{0}+\\beta _{1}x)}}} $$ where \u03b2 0 = \u2212 $$ \\beta _{0}=-\\mu /s $$ $$ y=\\beta _{0}+\\beta _{1}x $$ $$ \\beta _{1}=1/s $$ (inverse scale parameter or rate parameter): these are the y-intercept and slope of the log-odds as a function of x.",
+            "relation": "mentions",
+            "target": "beta_{0}=-mu/s",
+            "weight": 0.5
+        }
+    ],
+    "related_paths": []
+}
