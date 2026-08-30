@@ -1,0 +1,2962 @@
+{
+    "criterion": [
+        {
+            "path": [
+                {
+                    "source": "criterion",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.85,
+                    "explanation": "In linear regression, the regression coefficients represent the change in the criterion for each unit change in the predictor.",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.7395,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "criterion",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.85,
+                    "explanation": "In linear regression, the regression coefficients represent the change in the criterion for each unit change in the predictor.",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "linear regression",
+                    "relation": "co_occurs",
+                    "target": "regression coefficient",
+                    "weight": 0.3,
+                    "explanation": "In linear regression, the significance of a regression coefficient is assessed by computing a t test.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.255,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "criterion",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.85,
+                    "explanation": "In linear regression, the regression coefficients represent the change in the criterion for each unit change in the predictor.",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "linear regression",
+                    "relation": "co_occurs",
+                    "target": "unit change",
+                    "weight": 0.3,
+                    "explanation": "In linear regression, the regression coefficients represent the change in the criterion for each unit change in the predictor.[35]",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.255,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "criterion",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.85,
+                    "explanation": "In linear regression, the regression coefficients represent the change in the criterion for each unit change in the predictor.",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "linear regression",
+                    "relation": "co_occurs",
+                    "target": "predictor",
+                    "weight": 0.3,
+                    "explanation": "In linear regression, the regression coefficients represent the change in the criterion for each unit change in the predictor.[35]",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.255,
+            "path_quality": "weak"
+        }
+    ],
+    "linear least squares": [
+        {
+            "path": [
+                {
+                    "source": "linear least squares",
+                    "relation": "depends_on",
+                    "target": "closed-form expression",
+                    "weight": 0.89,
+                    "explanation": "Linear least squares has a closed-form expression",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "closed-form expression",
+                    "relation": "co_occurs",
+                    "target": "model fitting",
+                    "weight": 0.3,
+                    "explanation": "This does not have a closed-form expression, unlike linear least squares; see \u00a7 Model fitting.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.267,
+            "path_quality": "weak"
+        }
+    ],
+    "nonlinear mixed-effects model": [
+        {
+            "path": [
+                {
+                    "source": "nonlinear mixed-effects model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "Fixed effects Random effects Linear mixed-effects model Nonlinear mixed-effects model Nonlinear regression Nonparametric Semiparametric Robust Quantile Isotonic Principal components Least angle Local Segmented Errors-in-variables Estimation Least squares Linear Non-linear Ordinary Weighted Generalized Generalized estimating equation Partial Total Non-negative Ridge regression Regularized Least absolute deviations Iteratively reweighted Bayesian Bayesian multivariate Least-squares spectral analysis Background Regression validation Mean and predicted response Errors and residuals Goodness of fit Studentized residual Gauss\u2013Markov theorem Mathematics portalvte Applications[edit] General[edit] Logistic regression is used in various fields, including machine learning, most medical fields, and social sciences.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "nonlinear mixed-effects model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "Fixed effects Random effects Linear mixed-effects model Nonlinear mixed-effects model Nonlinear regression Nonparametric Semiparametric Robust Quantile Isotonic Principal components Least angle Local Segmented Errors-in-variables Estimation Least squares Linear Non-linear Ordinary Weighted Generalized Generalized estimating equation Partial Total Non-negative Ridge regression Regularized Least absolute deviations Iteratively reweighted Bayesian Bayesian multivariate Least-squares spectral analysis Background Regression validation Mean and predicted response Errors and residuals Goodness of fit Studentized residual Gauss\u2013Markov theorem Mathematics portalvte Applications[edit] General[edit] Logistic regression is used in various fields, including machine learning, most medical fields, and social sciences.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "nonlinear mixed-effects model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "Fixed effects Random effects Linear mixed-effects model Nonlinear mixed-effects model Nonlinear regression Nonparametric Semiparametric Robust Quantile Isotonic Principal components Least angle Local Segmented Errors-in-variables Estimation Least squares Linear Non-linear Ordinary Weighted Generalized Generalized estimating equation Partial Total Non-negative Ridge regression Regularized Least absolute deviations Iteratively reweighted Bayesian Bayesian multivariate Least-squares spectral analysis Background Regression validation Mean and predicted response Errors and residuals Goodness of fit Studentized residual Gauss\u2013Markov theorem Mathematics portalvte Applications[edit] General[edit] Logistic regression is used in various fields, including machine learning, most medical fields, and social sciences.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "beta": [
+        {
+            "path": [
+                {
+                    "source": "beta",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "the beta parameters in a logistic regression model) will almost always improve the ability of the model to predict the measured outcomes.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "beta",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "the beta parameters in a logistic regression model) will almost always improve the ability of the model to predict the measured outcomes.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "beta",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "the beta parameters in a logistic regression model) will almost always improve the ability of the model to predict the measured outcomes.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "wald statistic": [
+        {
+            "path": [
+                {
+                    "source": "wald statistic",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In logistic regression, there are several different tests designed to assess the significance of an individual predictor, most notably the likelihood ratio test and the Wald statistic.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "wald statistic",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In logistic regression, there are several different tests designed to assess the significance of an individual predictor, most notably the likelihood ratio test and the Wald statistic.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "wald statistic",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In logistic regression, there are several different tests designed to assess the significance of an individual predictor, most notably the likelihood ratio test and the Wald statistic.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "multinomial logit model": [
+        {
+            "path": [
+                {
+                    "source": "multinomial logit model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The reason for this separation is that it makes it easy to extend logistic regression to multi-outcome categorical variables, as in the multinomial logit model.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "multinomial logit model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The reason for this separation is that it makes it easy to extend logistic regression to multi-outcome categorical variables, as in the multinomial logit model.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "multinomial logit model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The reason for this separation is that it makes it easy to extend logistic regression to multi-outcome categorical variables, as in the multinomial logit model.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "coefficient": [
+        {
+            "path": [
+                {
+                    "source": "coefficient",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "coefficient",
+                    "relation": "co_occurs",
+                    "target": "parameter",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "parameter",
+                    "relation": "depends_on",
+                    "target": "logistic model",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.282,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "coefficient",
+                    "relation": "co_occurs",
+                    "target": "logistic model",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "depends_on",
+                    "target": "parameter",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.282,
+            "path_quality": "weak"
+        }
+    ],
+    "linear regression": [
+        {
+            "path": [
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.8265,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.7656,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "machine learning",
+                    "weight": 0.85,
+                    "explanation": "Logistic regression is used in machine learning",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.7395,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "single-layer neural network",
+                    "weight": 0.3,
+                    "explanation": "With this choice, the single-layer neural network is identical to the logistic regression model.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "dependent variable",
+                    "weight": 0.3,
+                    "explanation": "The reason for using logistic regression for this problem is that the values of the dependent variable, pass and fail, while represented by \"1\" and \"0\", are not cardinal numbers.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "coefficient",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "maximum-likelihood estimation": [
+        {
+            "path": [
+                {
+                    "source": "maximum-likelihood estimation",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The parameters of a logistic regression are most commonly estimated by maximum-likelihood estimation (MLE).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "maximum-likelihood estimation",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The parameters of a logistic regression are most commonly estimated by maximum-likelihood estimation (MLE).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "maximum-likelihood estimation",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The parameters of a logistic regression are most commonly estimated by maximum-likelihood estimation (MLE).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "parameter": [
+        {
+            "path": [
+                {
+                    "source": "parameter",
+                    "relation": "depends_on",
+                    "target": "logistic model",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "associated_with",
+                    "target": "odds",
+                    "weight": 0.92,
+                    "explanation": "Logistic model scales the odds of the given outcome at a constant rate",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.8648,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "parameter",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "parameter",
+                    "relation": "depends_on",
+                    "target": "logistic model",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "In statistics, a logistic model (or logit model) is a statistical model that models the log-odds of an event as a linear combination of one or more independent variables.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.282,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "parameter",
+                    "relation": "depends_on",
+                    "target": "logistic model",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.282,
+            "path_quality": "weak"
+        }
+    ],
+    "logit function": [
+        {
+            "path": [
+                {
+                    "source": "logit function",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.9,
+                    "explanation": "Logit model redirects to Logit function",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.855,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "logit function",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.9,
+                    "explanation": "Logit model redirects to Logit function",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "probit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.828,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "logit function",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.9,
+                    "explanation": "Logit model redirects to Logit function",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "co_occurs",
+                    "target": "binary dependent variable",
+                    "weight": 0.3,
+                    "explanation": "Statistical model for a binary dependent variable \"Logit model\" redirects here; not to be confused with Logit function.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.27,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logit function",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.9,
+                    "explanation": "Logit model redirects to Logit function",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "co_occurs",
+                    "target": "logistic model",
+                    "weight": 0.3,
+                    "explanation": "In statistics, a logistic model (or logit model) is a statistical model that models the log-odds of an event as a linear combination of one or more independent variables.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.27,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logit function",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.9,
+                    "explanation": "Logit model redirects to Logit function",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "co_occurs",
+                    "target": "logistic distribution",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.27,
+            "path_quality": "weak"
+        }
+    ],
+    "machine learning": [
+        {
+            "path": [
+                {
+                    "source": "machine learning",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.85,
+                    "explanation": "Logistic regression is used in machine learning",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.8075,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "machine learning",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.85,
+                    "explanation": "Logistic regression is used in machine learning",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.748,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "machine learning",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.85,
+                    "explanation": "Logistic regression is used in machine learning",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.7395,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "machine learning",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.85,
+                    "explanation": "Logistic regression is used in machine learning",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "single-layer neural network",
+                    "weight": 0.3,
+                    "explanation": "With this choice, the single-layer neural network is identical to the logistic regression model.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.255,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "machine learning",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.85,
+                    "explanation": "Logistic regression is used in machine learning",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "dependent variable",
+                    "weight": 0.3,
+                    "explanation": "The reason for using logistic regression for this problem is that the values of the dependent variable, pass and fail, while represented by \"1\" and \"0\", are not cardinal numbers.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.255,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "machine learning",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.85,
+                    "explanation": "Logistic regression is used in machine learning",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "coefficient",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.255,
+            "path_quality": "weak"
+        }
+    ],
+    "logistic regression": [
+        {
+            "path": [
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "probit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.874,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "logit function",
+                    "weight": 0.9,
+                    "explanation": "Logit model redirects to Logit function",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.855,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "criterion",
+                    "weight": 0.85,
+                    "explanation": "In linear regression, the regression coefficients represent the change in the criterion for each unit change in the predictor.",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.7395,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "co_occurs",
+                    "target": "binary dependent variable",
+                    "weight": 0.3,
+                    "explanation": "Statistical model for a binary dependent variable \"Logit model\" redirects here; not to be confused with Logit function.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "co_occurs",
+                    "target": "logistic model",
+                    "weight": 0.3,
+                    "explanation": "In statistics, a logistic model (or logit model) is a statistical model that models the log-odds of an event as a linear combination of one or more independent variables.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "co_occurs",
+                    "target": "logistic distribution",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        }
+    ],
+    "deviance": [
+        {
+            "path": [
+                {
+                    "source": "deviance",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In short, for logistic regression, a statistic known as the deviance is defined which is a measure of the error between the logistic model fit and the outcome data.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "deviance",
+                    "relation": "co_occurs",
+                    "target": "logistic model",
+                    "weight": 0.3,
+                    "explanation": "In short, for logistic regression, a statistic known as the deviance is defined which is a measure of the error between the logistic model fit and the outcome data.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "depends_on",
+                    "target": "parameter",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.282,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "deviance",
+                    "relation": "co_occurs",
+                    "target": "logistic model",
+                    "weight": 0.3,
+                    "explanation": "In short, for logistic regression, a statistic known as the deviance is defined which is a measure of the error between the logistic model fit and the outcome data.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "associated_with",
+                    "target": "odds",
+                    "weight": 0.92,
+                    "explanation": "Logistic model scales the odds of the given outcome at a constant rate",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "logistic distribution": [
+        {
+            "path": [
+                {
+                    "source": "logistic distribution",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic distribution",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic distribution",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "probit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "error variable": [
+        {
+            "path": [
+                {
+                    "source": "error variable",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "error variable",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "error variable",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "probit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "single-layer neural network": [
+        {
+            "path": [
+                {
+                    "source": "single-layer neural network",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "With this choice, the single-layer neural network is identical to the logistic regression model.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "single-layer neural network",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "With this choice, the single-layer neural network is identical to the logistic regression model.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "single-layer neural network",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "With this choice, the single-layer neural network is identical to the logistic regression model.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "linear mixed-effects model": [
+        {
+            "path": [
+                {
+                    "source": "linear mixed-effects model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "Fixed effects Random effects Linear mixed-effects model Nonlinear mixed-effects model Nonlinear regression Nonparametric Semiparametric Robust Quantile Isotonic Principal components Least angle Local Segmented Errors-in-variables Estimation Least squares Linear Non-linear Ordinary Weighted Generalized Generalized estimating equation Partial Total Non-negative Ridge regression Regularized Least absolute deviations Iteratively reweighted Bayesian Bayesian multivariate Least-squares spectral analysis Background Regression validation Mean and predicted response Errors and residuals Goodness of fit Studentized residual Gauss\u2013Markov theorem Mathematics portalvte Applications[edit] General[edit] Logistic regression is used in various fields, including machine learning, most medical fields, and social sciences.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "linear mixed-effects model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "Fixed effects Random effects Linear mixed-effects model Nonlinear mixed-effects model Nonlinear regression Nonparametric Semiparametric Robust Quantile Isotonic Principal components Least angle Local Segmented Errors-in-variables Estimation Least squares Linear Non-linear Ordinary Weighted Generalized Generalized estimating equation Partial Total Non-negative Ridge regression Regularized Least absolute deviations Iteratively reweighted Bayesian Bayesian multivariate Least-squares spectral analysis Background Regression validation Mean and predicted response Errors and residuals Goodness of fit Studentized residual Gauss\u2013Markov theorem Mathematics portalvte Applications[edit] General[edit] Logistic regression is used in various fields, including machine learning, most medical fields, and social sciences.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "linear mixed-effects model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "Fixed effects Random effects Linear mixed-effects model Nonlinear mixed-effects model Nonlinear regression Nonparametric Semiparametric Robust Quantile Isotonic Principal components Least angle Local Segmented Errors-in-variables Estimation Least squares Linear Non-linear Ordinary Weighted Generalized Generalized estimating equation Partial Total Non-negative Ridge regression Regularized Least absolute deviations Iteratively reweighted Bayesian Bayesian multivariate Least-squares spectral analysis Background Regression validation Mean and predicted response Errors and residuals Goodness of fit Studentized residual Gauss\u2013Markov theorem Mathematics portalvte Applications[edit] General[edit] Logistic regression is used in various fields, including machine learning, most medical fields, and social sciences.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "dependent variable": [
+        {
+            "path": [
+                {
+                    "source": "dependent variable",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The reason for using logistic regression for this problem is that the values of the dependent variable, pass and fail, while represented by \"1\" and \"0\", are not cardinal numbers.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "dependent variable",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The reason for using logistic regression for this problem is that the values of the dependent variable, pass and fail, while represented by \"1\" and \"0\", are not cardinal numbers.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "dependent variable",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The reason for using logistic regression for this problem is that the values of the dependent variable, pass and fail, while represented by \"1\" and \"0\", are not cardinal numbers.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "binary dependent variable": [
+        {
+            "path": [
+                {
+                    "source": "binary dependent variable",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "Statistical model for a binary dependent variable \"Logit model\" redirects here; not to be confused with Logit function.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "binary dependent variable",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "Statistical model for a binary dependent variable \"Logit model\" redirects here; not to be confused with Logit function.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "probit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "binary dependent variable",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "Statistical model for a binary dependent variable \"Logit model\" redirects here; not to be confused with Logit function.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "logit function",
+                    "weight": 0.9,
+                    "explanation": "Logit model redirects to Logit function",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.27,
+            "path_quality": "weak"
+        }
+    ],
+    "discrete choice models": [
+        {
+            "path": [
+                {
+                    "source": "discrete choice models",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "discrete choice models",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "discrete choice models",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "probit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "logit model": [
+        {
+            "path": [
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.836,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.8265,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "machine learning",
+                    "weight": 0.85,
+                    "explanation": "Logistic regression is used in machine learning",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.8075,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "single-layer neural network",
+                    "weight": 0.3,
+                    "explanation": "With this choice, the single-layer neural network is identical to the logistic regression model.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "dependent variable",
+                    "weight": 0.3,
+                    "explanation": "The reason for using logistic regression for this problem is that the values of the dependent variable, pass and fail, while represented by \"1\" and \"0\", are not cardinal numbers.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "coefficient",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        }
+    ],
+    "probit model": [
+        {
+            "path": [
+                {
+                    "source": "probit model",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.874,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "probit model",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "logit function",
+                    "weight": 0.9,
+                    "explanation": "Logit model redirects to Logit function",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.828,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "probit model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "probit model",
+                    "relation": "co_occurs",
+                    "target": "logistic function",
+                    "weight": 0.3,
+                    "explanation": "Analogous linear models for binary variables with a different sigmoid function instead of the logistic function (to convert the linear combination to a probability) can also be used, most notably the probit model; see \u00a7 Alternatives.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic function",
+                    "relation": "converts",
+                    "target": "probability",
+                    "weight": 0.95,
+                    "explanation": "Logistic function is the natural parameter for the Bernoulli distribution",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "probit model",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "co_occurs",
+                    "target": "binary dependent variable",
+                    "weight": 0.3,
+                    "explanation": "Statistical model for a binary dependent variable \"Logit model\" redirects here; not to be confused with Logit function.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "sigmoid function": [
+        {
+            "path": [
+                {
+                    "source": "sigmoid function",
+                    "relation": "co_occurs",
+                    "target": "logistic function",
+                    "weight": 0.3,
+                    "explanation": "Analogous linear models for binary variables with a different sigmoid function instead of the logistic function (to convert the linear combination to a probability) can also be used, most notably the probit model; see \u00a7 Alternatives.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic function",
+                    "relation": "converts",
+                    "target": "probability",
+                    "weight": 0.95,
+                    "explanation": "Logistic function is the natural parameter for the Bernoulli distribution",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "sigmoid function",
+                    "relation": "co_occurs",
+                    "target": "probit model",
+                    "weight": 0.3,
+                    "explanation": "Analogous linear models for binary variables with a different sigmoid function instead of the logistic function (to convert the linear combination to a probability) can also be used, most notably the probit model; see \u00a7 Alternatives.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "probit model",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "probability": [
+        {
+            "path": [
+                {
+                    "source": "probability",
+                    "relation": "converts",
+                    "target": "logistic function",
+                    "weight": 0.95,
+                    "explanation": "Logistic function is the natural parameter for the Bernoulli distribution",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic function",
+                    "relation": "co_occurs",
+                    "target": "bernoulli distribution",
+                    "weight": 0.3,
+                    "explanation": "More abstractly, the logistic function is the natural parameter for the Bernoulli distribution, and in this sense is the \"simplest\" way to convert a real number to a probability.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "probability",
+                    "relation": "converts",
+                    "target": "logistic function",
+                    "weight": 0.95,
+                    "explanation": "Logistic function is the natural parameter for the Bernoulli distribution",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic function",
+                    "relation": "co_occurs",
+                    "target": "sigmoid function",
+                    "weight": 0.3,
+                    "explanation": "Analogous linear models for binary variables with a different sigmoid function instead of the logistic function (to convert the linear combination to a probability) can also be used, most notably the probit model; see \u00a7 Alternatives.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "probability",
+                    "relation": "converts",
+                    "target": "logistic function",
+                    "weight": 0.95,
+                    "explanation": "Logistic function is the natural parameter for the Bernoulli distribution",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic function",
+                    "relation": "co_occurs",
+                    "target": "probit model",
+                    "weight": 0.3,
+                    "explanation": "Analogous linear models for binary variables with a different sigmoid function instead of the logistic function (to convert the linear combination to a probability) can also be used, most notably the probit model; see \u00a7 Alternatives.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        }
+    ],
+    "regression coefficient": [
+        {
+            "path": [
+                {
+                    "source": "regression coefficient",
+                    "relation": "co_occurs",
+                    "target": "linear regression",
+                    "weight": 0.3,
+                    "explanation": "In linear regression, the significance of a regression coefficient is assessed by computing a t test.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "regression coefficient",
+                    "relation": "co_occurs",
+                    "target": "linear regression",
+                    "weight": 0.3,
+                    "explanation": "In linear regression, the significance of a regression coefficient is assessed by computing a t test.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "criterion",
+                    "weight": 0.85,
+                    "explanation": "In linear regression, the regression coefficients represent the change in the criterion for each unit change in the predictor.",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.255,
+            "path_quality": "weak"
+        }
+    ],
+    "independent variable": [
+        {
+            "path": [
+                {
+                    "source": "independent variable",
+                    "relation": "co_occurs",
+                    "target": "logistic model",
+                    "weight": 0.3,
+                    "explanation": "The defining characteristic of the logistic model is that increasing one of the independent variables multiplicatively scales the odds of the given outcome at a constant rate, with each independent variable having its own parameter; for a binary dependent variable this generalizes the odds ratio.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "depends_on",
+                    "target": "parameter",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.282,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "independent variable",
+                    "relation": "co_occurs",
+                    "target": "parameter",
+                    "weight": 0.3,
+                    "explanation": "The defining characteristic of the logistic model is that increasing one of the independent variables multiplicatively scales the odds of the given outcome at a constant rate, with each independent variable having its own parameter; for a binary dependent variable this generalizes the odds ratio.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "parameter",
+                    "relation": "depends_on",
+                    "target": "logistic model",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.282,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "independent variable",
+                    "relation": "co_occurs",
+                    "target": "logistic model",
+                    "weight": 0.3,
+                    "explanation": "The defining characteristic of the logistic model is that increasing one of the independent variables multiplicatively scales the odds of the given outcome at a constant rate, with each independent variable having its own parameter; for a binary dependent variable this generalizes the odds ratio.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "associated_with",
+                    "target": "odds",
+                    "weight": 0.92,
+                    "explanation": "Logistic model scales the odds of the given outcome at a constant rate",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "maximum likelihood estimation": [
+        {
+            "path": [
+                {
+                    "source": "maximum likelihood estimation",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The parameters of a logistic regression are most commonly estimated by maximum-likelihood estimation (MLE).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "maximum likelihood estimation",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The parameters of a logistic regression are most commonly estimated by maximum-likelihood estimation (MLE).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "maximum likelihood estimation",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The parameters of a logistic regression are most commonly estimated by maximum-likelihood estimation (MLE).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "logistic function": [
+        {
+            "path": [
+                {
+                    "source": "logistic function",
+                    "relation": "converts",
+                    "target": "probability",
+                    "weight": 0.95,
+                    "explanation": "Logistic function is the natural parameter for the Bernoulli distribution",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "probability",
+                    "relation": "co_occurs",
+                    "target": "bernoulli distribution",
+                    "weight": 0.3,
+                    "explanation": "More abstractly, the logistic function is the natural parameter for the Bernoulli distribution, and in this sense is the \"simplest\" way to convert a real number to a probability.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic function",
+                    "relation": "converts",
+                    "target": "probability",
+                    "weight": 0.95,
+                    "explanation": "Logistic function is the natural parameter for the Bernoulli distribution",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "probability",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "The essential mechanism of logistic regression is grounded in the logistic function's ability to model the probability of binary outcomes accurately.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic function",
+                    "relation": "co_occurs",
+                    "target": "probit model",
+                    "weight": 0.3,
+                    "explanation": "Analogous linear models for binary variables with a different sigmoid function instead of the logistic function (to convert the linear combination to a probability) can also be used, most notably the probit model; see \u00a7 Alternatives.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "probit model",
+                    "relation": "corresponds_to",
+                    "target": "logit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "unit change": [
+        {
+            "path": [
+                {
+                    "source": "unit change",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In logistic regression, however, the regression coefficients represent the change in the logit for each unit change in the predictor.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "unit change",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In logistic regression, however, the regression coefficients represent the change in the logit for each unit change in the predictor.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "unit change",
+                    "relation": "co_occurs",
+                    "target": "linear regression",
+                    "weight": 0.3,
+                    "explanation": "In linear regression, the regression coefficients represent the change in the criterion for each unit change in the predictor.[35]",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "linear regression",
+                    "relation": "associated_with",
+                    "target": "logistic regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "bernoulli distribution": [
+        {
+            "path": [
+                {
+                    "source": "bernoulli distribution",
+                    "relation": "co_occurs",
+                    "target": "logistic function",
+                    "weight": 0.3,
+                    "explanation": "More abstractly, the logistic function is the natural parameter for the Bernoulli distribution, and in this sense is the \"simplest\" way to convert a real number to a probability.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic function",
+                    "relation": "converts",
+                    "target": "probability",
+                    "weight": 0.95,
+                    "explanation": "Logistic function is the natural parameter for the Bernoulli distribution",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "bernoulli distribution",
+                    "relation": "co_occurs",
+                    "target": "probability",
+                    "weight": 0.3,
+                    "explanation": "More abstractly, the logistic function is the natural parameter for the Bernoulli distribution, and in this sense is the \"simplest\" way to convert a real number to a probability.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "probability",
+                    "relation": "converts",
+                    "target": "logistic function",
+                    "weight": 0.95,
+                    "explanation": "Logistic function is the natural parameter for the Bernoulli distribution",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        }
+    ],
+    "model fitting": [
+        {
+            "path": [
+                {
+                    "source": "model fitting",
+                    "relation": "co_occurs",
+                    "target": "closed-form expression",
+                    "weight": 0.3,
+                    "explanation": "This does not have a closed-form expression, unlike linear least squares; see \u00a7 Model fitting.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "closed-form expression",
+                    "relation": "depends_on",
+                    "target": "linear least squares",
+                    "weight": 0.89,
+                    "explanation": "Linear least squares has a closed-form expression",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.267,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "model fitting",
+                    "relation": "co_occurs",
+                    "target": "linear least squares",
+                    "weight": 0.3,
+                    "explanation": "This does not have a closed-form expression, unlike linear least squares; see \u00a7 Model fitting.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "linear least squares",
+                    "relation": "depends_on",
+                    "target": "closed-form expression",
+                    "weight": 0.89,
+                    "explanation": "Linear least squares has a closed-form expression",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.267,
+            "path_quality": "weak"
+        }
+    ],
+    "model": [
+        {
+            "path": [
+                {
+                    "source": "model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "the beta parameters in a logistic regression model) will almost always improve the ability of the model to predict the measured outcomes.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "the beta parameters in a logistic regression model) will almost always improve the ability of the model to predict the measured outcomes.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "the beta parameters in a logistic regression model) will almost always improve the ability of the model to predict the measured outcomes.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "indicator variable": [
+        {
+            "path": [
+                {
+                    "source": "indicator variable",
+                    "relation": "depends_on",
+                    "target": "logistic regression",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.836,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "indicator variable",
+                    "relation": "depends_on",
+                    "target": "logistic regression",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.7656,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "indicator variable",
+                    "relation": "depends_on",
+                    "target": "logistic regression",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "machine learning",
+                    "weight": 0.85,
+                    "explanation": "Logistic regression is used in machine learning",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.748,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "indicator variable",
+                    "relation": "depends_on",
+                    "target": "logistic regression",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "single-layer neural network",
+                    "weight": 0.3,
+                    "explanation": "With this choice, the single-layer neural network is identical to the logistic regression model.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "indicator variable",
+                    "relation": "depends_on",
+                    "target": "logistic regression",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "dependent variable",
+                    "weight": 0.3,
+                    "explanation": "The reason for using logistic regression for this problem is that the values of the dependent variable, pass and fail, while represented by \"1\" and \"0\", are not cardinal numbers.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "indicator variable",
+                    "relation": "depends_on",
+                    "target": "logistic regression",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "co_occurs",
+                    "target": "coefficient",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        }
+    ],
+    "odds": [
+        {
+            "path": [
+                {
+                    "source": "odds",
+                    "relation": "associated_with",
+                    "target": "logistic model",
+                    "weight": 0.92,
+                    "explanation": "Logistic model scales the odds of the given outcome at a constant rate",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "depends_on",
+                    "target": "parameter",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.8648,
+            "path_quality": "strong"
+        },
+        {
+            "path": [
+                {
+                    "source": "odds",
+                    "relation": "co_occurs",
+                    "target": "parameter",
+                    "weight": 0.3,
+                    "explanation": "The defining characteristic of the logistic model is that increasing one of the independent variables multiplicatively scales the odds of the given outcome at a constant rate, with each independent variable having its own parameter; for a binary dependent variable this generalizes the odds ratio.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "parameter",
+                    "relation": "depends_on",
+                    "target": "logistic model",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.282,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "odds",
+                    "relation": "associated_with",
+                    "target": "logistic model",
+                    "weight": 0.92,
+                    "explanation": "Logistic model scales the odds of the given outcome at a constant rate",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "In statistics, a logistic model (or logit model) is a statistical model that models the log-odds of an event as a linear combination of one or more independent variables.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "odds",
+                    "relation": "associated_with",
+                    "target": "logistic model",
+                    "weight": 0.92,
+                    "explanation": "Logistic model scales the odds of the given outcome at a constant rate",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "logistic model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "closed-form expression": [
+        {
+            "path": [
+                {
+                    "source": "closed-form expression",
+                    "relation": "depends_on",
+                    "target": "linear least squares",
+                    "weight": 0.89,
+                    "explanation": "Linear least squares has a closed-form expression",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "linear least squares",
+                    "relation": "co_occurs",
+                    "target": "model fitting",
+                    "weight": 0.3,
+                    "explanation": "This does not have a closed-form expression, unlike linear least squares; see \u00a7 Model fitting.",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.267,
+            "path_quality": "weak"
+        }
+    ],
+    "standard normal distribution": [
+        {
+            "path": [
+                {
+                    "source": "standard normal distribution",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "standard normal distribution",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "standard normal distribution",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "This formulation\u2014which is standard in discrete choice models\u2014makes clear the relationship between logistic regression (the \"logit model\") and the probit model, which uses an error variable distributed according to a standard normal distribution instead of a standard logistic distribution.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "corresponds_to",
+                    "target": "probit model",
+                    "weight": 0.92,
+                    "explanation": "Logit model is related to the probit model in discrete choice models",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.276,
+            "path_quality": "weak"
+        }
+    ],
+    "predictor": [
+        {
+            "path": [
+                {
+                    "source": "predictor",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In logistic regression, however, the regression coefficients represent the change in the logit for each unit change in the predictor.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "predictor",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In logistic regression, however, the regression coefficients represent the change in the logit for each unit change in the predictor.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "depends_on",
+                    "target": "indicator variable",
+                    "weight": 0.88,
+                    "explanation": "Logistic regression uses an indicator variable to code the binary dependent variable",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.264,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "predictor",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In logistic regression, however, the regression coefficients represent the change in the logit for each unit change in the predictor.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "associated_with",
+                    "target": "linear regression",
+                    "weight": 0.87,
+                    "explanation": "Linear regression and logistic regression have many similarities",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.261,
+            "path_quality": "weak"
+        }
+    ],
+    "logistic model": [
+        {
+            "path": [
+                {
+                    "source": "logistic model",
+                    "relation": "co_occurs",
+                    "target": "logit model",
+                    "weight": 0.3,
+                    "explanation": "In statistics, a logistic model (or logit model) is a statistical model that models the log-odds of an event as a linear combination of one or more independent variables.",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logit model",
+                    "relation": "estimates",
+                    "target": "logistic regression",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic model",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                },
+                {
+                    "source": "logistic regression",
+                    "relation": "estimates",
+                    "target": "logit model",
+                    "weight": 0.95,
+                    "explanation": "Logistic regression estimates parameters in the logit model",
+                    "edge_type": "semantic"
+                }
+            ],
+            "path_score": 0.285,
+            "path_quality": "weak"
+        },
+        {
+            "path": [
+                {
+                    "source": "logistic model",
+                    "relation": "depends_on",
+                    "target": "parameter",
+                    "weight": 0.94,
+                    "explanation": "Each independent variable in logistic model has its own parameter",
+                    "edge_type": "semantic"
+                },
+                {
+                    "source": "parameter",
+                    "relation": "co_occurs",
+                    "target": "logistic regression",
+                    "weight": 0.3,
+                    "explanation": "In regression analysis, logistic regression[1] (or logit regression) estimates the parameters of a logistic model (the coefficients in the linear or non linear combinations).",
+                    "edge_type": "contextual"
+                }
+            ],
+            "path_score": 0.282,
+            "path_quality": "weak"
+        }
+    ]
+}
