@@ -1,0 +1,14 @@
+
+{
+    "clustering": ["Clustering", ["unsupervised", "clustering", "kmeans"]],
+    "linear_regression": ["Linear Regression", ["supervised", "regression", "lr", "lin reg",
+                                                "linear regression"]],
+    "attention": ["Attention", ["supervised", "regression","attention", "mha", "mqa", "gqa"]],
+    "transformer": ["Transformer", ["supervised", "regression","transformer"]],
+    "ann": ["Artificial Neural Network", ["supervised", "regression", "nn",
+                                            "neural network", "ann", "mlp", "multi layer perceptron"]],
+    "decision_tree": ["Decision Tree", ["supervised", "regression", "decision tree"]],
+    "random_forest": ["Random Forest", ["supervised", "regression", "rf", "random forest"]],
+    "gradient_boosting": ["Gradient Boosting", ["supervised", "regression", "gbr", "gb", "gbc", "gradient boosting"]],
+    "cnn": ["Convolutional Neural Network", ["supervised", "regression", "convolutional neural network", "cnn"]]
+}
