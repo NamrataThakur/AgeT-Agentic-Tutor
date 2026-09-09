@@ -1,3 +1,4 @@
+```text 
 Chainlit
    ↓ HTTP
 FastAPI route
@@ -5,3 +6,4 @@ FastAPI route
 InterviewService
    ↓
 LangGraph
+```
