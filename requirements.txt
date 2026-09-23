@@ -279,3 +279,4 @@ torch
 huggingface_hub[hf_xet]
 chainlit==2.11.1
 fastmcp==4.0.3
+redis==8.1.0
