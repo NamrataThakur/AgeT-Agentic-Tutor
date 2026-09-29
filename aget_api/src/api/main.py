@@ -11,9 +11,11 @@ if parent_dir not in sys.path:
 
 from api.routes import interview
 from api.routes import health
+from api.routes import sse
 
 app = FastAPI(title="AgeT FastAPI Backend Service", version="1.0.0")
 
 app.include_router(router=interview.router)
 app.include_router(router=health.router)
+app.include_router(router=sse.router)
 
