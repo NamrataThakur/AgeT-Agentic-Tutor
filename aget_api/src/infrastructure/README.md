@@ -88,3 +88,24 @@ SSE Manager is the routing layer:
         ▼              ▼              ▼
     Browser A      Browser B      Browser C
 ```
+
+<b>Shared SSEManager is important</b>
+
+The SSE fastapi router and Event Handler must receive the same instance:
+```text
+                 ApplicationContainer
+                         │
+                         ▼
+                SSEManager instance
+                   /          \
+                  /            \
+                 ▼              ▼
+          SSE Router       Event Handler
+               │                │
+               │                │
+          connect()          send()
+               │                │
+               └───────┬────────┘
+                       ▼
+                  same queues
+```

@@ -14,6 +14,9 @@ redis_url = os.getenv("REDIS_URL")
 
 redis_client = Redis.from_url(url=redis_url, decode_responses=True)
 
+async def redis_close():
+    await redis_client.close()
+
 
 # ---- Test Async Version ------- :
 async def main():
