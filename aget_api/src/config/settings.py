@@ -10,6 +10,9 @@ class Settings(BaseSettings):
         env_file=".env", extra="ignore", env_file_encoding="utf-8"
     )
 
+    #--------- Status of AgeT ----------
+    STATUS : str = "test"
+
     #--------- LLM Configuration ----------
     MODEL_TYPE : str = "openai"
     MODEL_NAME_QS_GEN : str = "gpt-5.4-mini"
@@ -22,10 +25,12 @@ class Settings(BaseSettings):
     RERANKER_K : int = 20
     MODEL_NAME_ENTITY_EXTRACTION : str = "urchade/gliner_medium-v2.1"
     ENTITY_THRESHOLD : float = 0.4
+    SPEECH_MODEL_NAME : str = "whisper-large-v3-turbo"
 
     # --- AgeT Configuration ---
     TOTAL_MESSAGES_SUMMARY_TRIGGER: int = 30
-    TOTAL_MESSAGES_AFTER_SUMMARY: int = 5
+    MAX_TURN_COUNT : int = 5
+    MAX_ATTEMPTS : int = 2
 
     #--------------- EMBEDDING Configuration -------------
     OPENAI_EMBEDDING_MODEL_ID: str = "text-embedding-3-large"
@@ -56,9 +61,17 @@ class Settings(BaseSettings):
     TOPIC_NORMALIZATION_JSON_PATH : Path = Path(r"aget_api\src\data\topics.json")
     ENTITY_LABELS_JSON_PATH : Path = Path(r"aget_api\src\data\entity_labels.json") #To DO
 
-
     # --- A2A Config ---
     A2A_TRANSPORT : str = "local" #Options : local or http
+
+    # --- MCP STARTUP COMMANDS ---
+    MCP_SERVER_COMMAND : str = ""
+    MCP_SERVER_ARGS : list[str] = ["python", r"aget_api\src\knowledge_mcp\server.py"]
+
+    # --- Background Jobs --- 
+    MAX_CONCURRENCY : int = 4
+    REDIS_CONSUMER_MAX_EVENT : int = 10
+    REDIS_CONSUMER_BLOCK_SECS : int = 5000
 
 
 
