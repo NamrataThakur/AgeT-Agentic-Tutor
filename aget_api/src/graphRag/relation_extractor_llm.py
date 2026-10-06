@@ -1,5 +1,9 @@
 #This file handles the relation extraction from each chunks created using semantic chunking:
 
+import warnings
+
+warnings.filterwarnings("ignore")
+
 from gliner import GLiNER
 import re
 import json
@@ -8,6 +12,7 @@ import itertools
 from typing import List, Sequence, Dict
 from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
+from sklearn.metrics.pairwise import cosine_similarity
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 
@@ -23,19 +28,29 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
-from pydantic_models.models import RelationExtractBatch, RELATION_TYPES
-from graphRag.prompts import RELATION_EXTRACTION_PROMPT
+from data_models.models import RelationExtractBatch, RelationType, GraphRelationBatch, OntologyMapping
+from prompts.relation_extraction_prompt import RELATION_EXTRACTION_PROMPT
+from prompts.graph_relation_mapping_prompt import GRAPH_RELATION_MAPPING_PROMPT
+from embeddings.embedders import EmbeddingsCreator
+from config.settings import settings
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
+ALLOWED_RELATIONS = [ r.value for r in RelationType]
+ENTITY_SIM_THRESHOLD = 0.5
 
 
 class RelationExtractor:
     def __init__(self):
         self.nlp = spacy.load("en_core_web_sm")
-        self.llm = ChatOpenAI(name="gpt-4.1-mini", temperature=0.00, api_key=openai_api_key, max_tokens=1200, max_retries=3)
+        self.embedders = EmbeddingsCreator(embed_model_type=settings.MODEL_TYPE)
+        self.llm = ChatOpenAI(name=settings.MODEL_NAME, 
+                              temperature=settings.MODEL_TEMPERATURE, 
+                              api_key=openai_api_key, 
+                              max_tokens=settings.MAX_TOKENS_REL_EXTRACTION,
+                              max_retries=settings.MAX_RETRIES)
 
         #Read this from config file:
-        with open(r"D:\LLM_Deeplearning.ai\AgeT-Agentic-Tutor\aget_api\src\data\relation_normalization.json", "r") as f:
+        with open(settings.RELATION_NORMALIZATION_JSON_PATH, "r") as f:
             self.relation_patterns = json.load(f)
 
     
@@ -117,7 +132,7 @@ class RelationExtractor:
                                     "target" : target,
                                     "explanation" : sent.text.strip(),
                                     "edge_type": "contextual",
-                                    "weight": 0.2,
+                                    "weight": 0.3,
                                 })
 
         return relations
@@ -134,7 +149,7 @@ class RelationExtractor:
                 pruned_relations.append(rel)
         
         for rel in relations:
-            if rel['edge_type'] == "contextual":
+            if rel['edge_type'] == "contextual" or rel['edge_type'] == "conceptual":
                 entity_pair = (rel['source'], rel['target'])
                 reverse_pair = (rel['target'], rel['source'])
                 if entity_pair not in semantic_entity_pair and reverse_pair not in semantic_entity_pair:
@@ -155,41 +170,157 @@ class RelationExtractor:
         
         return list(unique.values())
     
-    def relation_extraction_pipeline(self, entities: Dict, chunk : Document) -> Dict:
-        
-        print("Relation Extraction Pipeline Started..!")
-        chunk_text = chunk.page_content
+
+    def extract_llm_raw_relations(self, entities : Dict, chunk_text : str) -> RelationExtractBatch:
+
         relation_extraction_prompt = PromptTemplate(template=RELATION_EXTRACTION_PROMPT,
-                                                    input_variables=["relation_types","entity_list","chunk"],
+                                                    input_variables=["entity_list","chunk"],
                                                     )
         
         structured_llm = self.llm.with_structured_output(RelationExtractBatch)
 
         relation_chain = relation_extraction_prompt | structured_llm
 
-        relation = relation_chain.invoke({"relation_types": RELATION_TYPES, 
-                                          "entity_list":entities['entities'],
-                                           "chunk": chunk_text, 
-                                          })
-        print("Relations Extracted Successfully Using LLM ...!")
+        raw_relation = relation_chain.invoke({"entity_list":entities['entities'],
+                                                "chunk": chunk_text, 
+                                            })
+        print("Raw form Relations Extracted Successfully Using LLM ...!")
 
-        llm_relation = []
-        for rel in relation.relation:
+        return raw_relation
+    
+
+    def canonicalize_llm_relations(self, source : str, raw_relations : str, target : str) -> RelationType:
+
+        raw_relations = raw_relations.strip().lower()
+        if raw_relations in self.relation_patterns:
+            return self.relation_patterns[raw_relations]
+        
+        relation = self.classify_relation(source = source, raw_relations = raw_relations , target = target)
+
+        return relation
+    
+
+    def classify_relation(self, source : str, raw_relations : str, target : str) -> RelationType:
+
+        relation_extraction_prompt = PromptTemplate(template=GRAPH_RELATION_MAPPING_PROMPT,
+                                                    input_variables=["source","raw_relation", "target", "ALLOWED_RELATIONS"],
+                                                    )
+        
+        structured_llm = self.llm.with_structured_output(OntologyMapping)
+
+        relation_chain = relation_extraction_prompt | structured_llm
+
+        ontology_relation = relation_chain.invoke({"source":source,
+                                                "target": target, 
+                                                "raw_relation": raw_relations, 
+                                                "ALLOWED_RELATIONS": ALLOWED_RELATIONS, 
+                                            })
+        
+        return ontology_relation.ontology_relation
+
+    def build_graph_relations(self, raw_relation : RelationExtractBatch) -> list[Dict]:
+
+        final_ontology_relations = []
+
+        for rel in raw_relation.relation:
+            ontology_relations = self.canonicalize_llm_relations(source=rel.source,
+                                                                 raw_relations=rel.relation,
+                                                                 target=rel.target)
+            
             obj = {
                 "source" : rel.source,
-                "relation" : rel.relation,
+                "relation" : ontology_relations,
                 "target" : rel.target,
                 "explanation" : rel.explanation,
                 "edge_type" : rel.edge_type,
                 "weight" : rel.confidence
             }
-            llm_relation.append(obj)
+
+            final_ontology_relations.append(obj)
+        
+        print("Ontology Relations Mapped Successfully Using LLM ...!")    
+        return final_ontology_relations
+    
+
+    def build_chunk_entity_relations(self, entities: Dict, chunk_id : str) -> List[Dict]:
+        mentions = []
+
+        for entity in entities:
+            obj = {
+                "source" : chunk_id,
+                "relation" : "mentions",
+                "target" : entity['normalized_text'],
+                "explanation" : "Entity present in the chunk",
+                "edge_type" : "mentions",
+                "weight" : 0.2
+            }
+
+            mentions.append(obj)
+
+        return mentions
+    
+
+    def build_similar_entity_relations(self, entities: Dict, chunk_text : str) -> List[Dict]:
+        relations = []
+
+        sentences = self.nlp(chunk_text)
+
+        for sent in sentences.sents:
+            unique = set()
+
+            local_entities = self.extract_local_entities(sentences=sent.text.lower(), entities=entities)
+
+            for ent_1, ent_2 in itertools.combinations(local_entities, 2):
+                source = ent_1['normalized_text']
+                target = ent_2['normalized_text']
+
+                if source == target:
+                    continue
+
+                key_pair = tuple(sorted([source, target]))
+                if key_pair in unique:
+                    continue
+
+                unique.add(key_pair)
+
+                #Get the entity embeddings:
+                source_embeddings = self.embedders.get_query_embeddings(query = source)
+                target_embeddings = self.embedders.get_query_embeddings(query = target)
+
+                cos_sim = cosine_similarity(X=[source_embeddings], Y=[target_embeddings])[0][0]
+
+                if cos_sim >= ENTITY_SIM_THRESHOLD:
+
+                    relations.append({
+                                        "source" : source,
+                                        "relation" : "conceptually_similar",
+                                        "target" : target,
+                                        "explanation" : sent.text.strip(),
+                                        "edge_type": "conceptual",
+                                        "weight": float(cos_sim),
+                                    })
+
+        return relations
+    
+    def relation_extraction_pipeline(self, entities: Dict, chunk : Document, chunk_id : str) -> Dict:
+        
+        print("Relation Extraction Pipeline Started..!")
+        chunk_text = chunk.page_content
+        
+        raw_relation = self.extract_llm_raw_relations(entities=entities, chunk_text=chunk_text)
+        ontology_relations = self.build_graph_relations(raw_relation=raw_relation)
 
         cooccurence_relations = self.extract_cooccurence_relations(chunk_text=chunk_text, entities=entities)
         print("Co-Occurence Relations Extracted Successfully...!")
 
+        mentions_relations = self.build_chunk_entity_relations(entities=entities, chunk_id=chunk_id)
+        print("Chunk-Entity 'Mentions' Relations Extracted Successfully...!")
+
+        conceptual_relations = self.build_similar_entity_relations(entities=entities, chunk_text=chunk_text)
+        print("Conceptual Relations Extracted Successfully...!")
+
         print("Relation Post-Processing Started..!")
-        relations = llm_relation + cooccurence_relations
+        relations = ontology_relations + cooccurence_relations + mentions_relations + conceptual_relations
 
         unique_relations = self.deduplicated_relations(relations=relations)
         print("ALL UNIQUE relations Extracted Successfully...!")

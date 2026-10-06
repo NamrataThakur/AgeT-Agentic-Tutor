@@ -7,7 +7,7 @@ warnings.filterwarnings("ignore")
 
 from langchain_mongodb import MongoDBAtlasVectorSearch
 from langchain_mongodb.retrievers import MongoDBAtlasHybridSearchRetriever
-
+from pymongo import MongoClient
 import os
 import sys
 os.pardir
@@ -18,29 +18,24 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
-from db.mongo import MongoDb
 from embeddings.embedders import EmbeddingsCreator
 
 class Retriever:
-    def __init__(self, embed_model_type = "openai"):
-        self.db = MongoDb()
+    def __init__(self, db : MongoClient, embed_model_type = "openai"):
+        self.db = db
         self.embedder = EmbeddingsCreator(embed_model_type=embed_model_type)
 
 
-    def get_retriever(self, k : int  = 5) -> MongoDBAtlasHybridSearchRetriever:
+    def get_vectorstore(self) -> MongoDBAtlasVectorSearch:
         """Creates and returns a hybrid search retriever with the specified embedding model.
 
-        Args:
-            k (int, optional): Number of documents to retrieve. Defaults to 5.
-
         Returns:
-            MongoDBAtlasHybridSearchRetriever: A configured hybrid search retriever using both
-            vector and text search capabilities.
+            MongoDBAtlasVectorSearch: A configured vector store using vector capabilities.
         """
-        
+
         self.vector_store = MongoDBAtlasVectorSearch(
             collection=self.db.chunks_collection,
-            embedding=self.embedder,
+            embedding=self.embedder.embed_model,
 
             #Vector Index Name
             index_name="vector_index",
@@ -53,17 +48,30 @@ class Retriever:
         )
 
 
+    def get_hybrid_retriever(self, k : int  = 20) -> MongoDBAtlasHybridSearchRetriever:
+        """Creates and returns a hybrid search retriever with the specified embedding model.
+        This is Langchain compatible.
+
+        Args:
+            k (int, optional): Number of documents to retrieve. Defaults to 5.
+
+        Returns:
+            MongoDBAtlasHybridSearchRetriever: A configured hybrid search retriever using both
+            vector and text search capabilities.
+        """
+        
         retriever = MongoDBAtlasHybridSearchRetriever(
                     vectorstore=self.vector_store,
                     search_index_name = "text_index",
                     top_k=k,
 
                     #Penalty applied to vector search results in RRF : score = 1 / (rank + penalty)
-                    vector_penalty=50,
+                    vector_penalty=50.0,
 
                     #Penalty applied to text search results in RRF : score = 1 / (rank + penalty)
-                    fulltext_penalty=50
-        )
+                    fulltext_penalty=60.0
+
+                    )
 
         return retriever
 
