@@ -1,12 +1,10 @@
 #This file handles the semantic chunking of the data extracted from the Wikipedia:
 
-from typing import Literal
+from typing import Literal, List, Dict
 from langchain_community.embeddings import OllamaEmbeddings, OpenAIEmbeddings
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_core.documents import Document
 from sentence_transformers import SentenceTransformer
-
-from loader import InformationExtractor
 
 import os
 import sys
@@ -20,8 +18,8 @@ if parent_dir not in sys.path:
 
 from graphRag.entity_extractor import EntityExtractor
 from graphRag.relation_extractor_llm import RelationExtractor
-
-from pydantic_models.models import TopicsFactory
+from ingestion.loader import InformationExtractor
+from data_models.models import TopicsFactory
 
 import os
 from dotenv import load_dotenv
@@ -36,6 +34,8 @@ class ChunkCreator:
     def __init__(self, embed_model_type = Literal['openai'] | str):
         self.model_type = embed_model_type
 
+        print(f"Embedding model family : {embed_model_type}")
+
         #Read the model name from config file:
         if self.model_type == "openai":
             self.embed_model = OpenAIEmbeddings(model="text-embedding-3-large")
@@ -46,8 +46,9 @@ class ChunkCreator:
         else:
             self.embed_model = SentenceTransformer('all-mpnet-base-v2')
 
-    def get_semantic_chunks(self, documents : list[Document] ) -> list[Document]:
+    def get_semantic_chunks(self, documents : List[Document] ) -> List[Document]:
 
+        print("==================================================================================")
         print("Semantic Chunking Stage Started ...!")
 
         chunker = SemanticChunker(embeddings=self.embed_model, 
@@ -59,6 +60,7 @@ class ChunkCreator:
         chunked_docs = chunker.create_documents(texts=[raw_text])
 
         print("Semantic Chunking Stage Completed ...!")
+        print("==================================================================================")
         return chunked_docs
 
 
