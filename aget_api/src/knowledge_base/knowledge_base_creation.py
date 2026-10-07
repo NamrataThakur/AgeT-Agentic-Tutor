@@ -29,7 +29,7 @@ from data_models.knowledge_hash import KnowledgeHashBatch
 from embeddings.embedders import EmbeddingsCreator
 from db.mongo import MongoDb
 from graphRag.graph_builder import GraphBuilder
-from tools.kb_hash_creation import KnowledgeHashCreator
+from app_tools.kb_hash_creation import KnowledgeHashCreator
 from config.settings import settings
 
 # ENTITY_LABELS = ["statistical concept", "statistical unit",
