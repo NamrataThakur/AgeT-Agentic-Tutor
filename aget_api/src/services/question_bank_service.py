@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Dict, Any
+from pymongo import MongoClient
 import os
 import sys
 os.pardir
@@ -11,6 +12,7 @@ if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
 from db.mongo import MongoDb
+from services.bucket_service import BucketService
 from question_generator.question_generation_pipeline import QuestionFullGenerationPipeline
 
 
@@ -19,12 +21,19 @@ class QsBankState:
     exists : bool
     qs_bank : List[Dict] | None
     existing_hash : Dict | None
+    message : str | None
+    bucket_details : List[Dict] | None
 
 
 class QsBankService:
-    def __init__(self):
-        self.db = MongoDb()
-        self.qs_bank_generator = QuestionFullGenerationPipeline()
+    def __init__(self, db: MongoDb, 
+                        qs_generator : QuestionFullGenerationPipeline, 
+                        bucket_service : BucketService):
+        self.db = db
+        self.bucket_service = bucket_service
+        self.qs_bank_generator = qs_generator
+
+
 
     async def fetch_qs_bank(self, topic: str) -> tuple[List[Dict], Dict]:
         
@@ -86,16 +95,23 @@ class QsBankService:
         #Based on this current topic, question bank service will load already generated QS Bank:
         qs_bank, prompt_kn_hashes = await self.fetch_qs_bank(topic=topic)
 
+        #Based on the current topic, fetch the global bucket info also:
+        bucket_info = await self.bucket_service.fetch_bucket_bank(topic=topic)
+
         if len(qs_bank) == 0:
-            print(f"Question Bank Does Not Exists for the topic : {topic}. Generating Full Question Bank..!")
+            message = f"Question and Bucket Bank Does Not Exists for the topic : {topic}. Full Question Bank needs to be generated..!"
             return QsBankState(exists=False, 
                                qs_bank=None,
-                               existing_hash=None)
+                               existing_hash=None,
+                               message=message,
+                               bucket_details=None)
 
 
         return QsBankState(exists=True, 
                            qs_bank=qs_bank, 
-                           existing_hash=prompt_kn_hashes)
+                           existing_hash=prompt_kn_hashes,
+                           message="Question Bank Exists for the the topic : {topic}",
+                           bucket_details=bucket_info)
 
     
     async def get_hashes(self, topic : str) -> dict:
@@ -159,8 +175,10 @@ class QsBankService:
     
 
     async def create_qs_bank(self, user_input:str) -> QsBankState:
-        qs_bank, message, hashes = self.qs_bank_generator.full_QSBank_generation_pipeline(user_query=user_input)
-        print(message)
+        qs_bank, message, hashes, global_bucket = await self.qs_bank_generator.full_QSBank_generation_pipeline(
+                                                        user_query=user_input)
         return QsBankState(exists=True, 
                            qs_bank=qs_bank,
-                           existing_hash=hashes)
+                           existing_hash=hashes,
+                           message=message,
+                           bucket_details=[global_bucket])
