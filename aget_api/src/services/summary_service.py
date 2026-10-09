@@ -21,16 +21,18 @@ from agents.agent_runtime import AgentRuntime
 from data_models.agent_skills import AgentSkill
 from data_models.a2a_response import A2AResponse
 from agents.agent_registry import AgentRegistry
+from data_models.conversation_context import ConversationContext
 
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
-class SummaryService:
-    def __init__(self):
-        self.runtime = AgentRuntime()
-        self.registry = AgentRegistry()
 
-    async def execute(self, context, skill : AgentSkill) -> A2AResponse:
+class SummaryService:
+    def __init__(self, runtime: AgentRuntime, registry: AgentRegistry):
+        self.runtime = runtime
+        self.registry = registry
+
+    async def execute(self, context : ConversationContext, skill : AgentSkill) -> A2AResponse:
 
         #Step 1: Get a SummaryAgent Object to pass in runtime:
         # Get the required specialised agent using Agent Registry:
@@ -38,7 +40,7 @@ class SummaryService:
         
         #Step 2: Call AgentRuntime with no A2ATask and AgentState
         # AgentRuntime will use agent context and call the required agent:
-        response = await self.runtime.execute(agent=agent, context=context)
+        response = await self.runtime.execute(agent=agent, context=context, summary=True)
 
         #Step 3: Return A2AResponse:
         return response
