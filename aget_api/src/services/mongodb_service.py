@@ -1,6 +1,7 @@
 import os
 import sys
 from datetime import datetime
+from pymongo import MongoClient
 os.pardir
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
@@ -16,8 +17,8 @@ from data_models.session_memory import SessionMemory
 
 
 class MongoDBService:
-    def __init__(self):
-        self.db = MongoDb()
+    def __init__(self, db: MongoClient):
+        self.db = db
 
 
     async def get_or_create_episodic_memory(self, user_id : str, interview_id : str) -> EpisodicMemory:
@@ -25,7 +26,8 @@ class MongoDBService:
         #Checking if the User Exists in Episodic Memory Collection of MongoDB:
         episodic_docs = self.db.episodic_memory_collection.find_one(
                                                                     {
-                                                                        "user_id" : user_id
+                                                                        "user_id" : user_id,
+                                                                        "interview_id" : interview_id
                                                                     },
                                                                     {
                                                                         "_id" : 0
@@ -82,12 +84,13 @@ class MongoDBService:
         return memory
 
     #To Be used only for local testing in the absence of Redis:
-    async def get_or_create_session_memory(self, interview_id : str) -> SessionMemory:
+    async def get_or_create_session_memory(self, user_id : str , interview_id : str, interview_status:str) -> SessionMemory:
     
         #Checking if the User Exists in Session Memory Collection of MongoDB:
         session_docs = self.db.temp_session_memory_collection.find_one(
                                                                     {
-                                                                        "interview_id" : interview_id
+                                                                        "interview_id" : interview_id,
+                                                                        "user_id" : user_id
                                                                     },
                                                                     {
                                                                         "_id" : 0
@@ -104,10 +107,84 @@ class MongoDBService:
 
         #If User DOES NOT Exists, Create Pydantic Object for the memory:
         memory = SessionMemory(interview_id=interview_id,
-                                interview_status="interview_started")
+                                user_id=user_id,
+                                interview_status=interview_status,
+                                turn_count=1)
 
-
+        print(memory)
         #Update the MongoDB Collection:
         self.db.ingest_memory(memory_type="session", memory=[memory])
 
         return memory
+
+
+    ##To Be used only for local testing in the absence of Redis:
+    async def update_session_memory(self, user_id : str , interview_id : str, memory : SessionMemory):
+
+        session_memory_data = memory.model_dump(exclude_none=True)
+        update_data = {
+            f"{key}" : value 
+            for key, value in session_memory_data.items()
+        }
+        print(update_data)
+
+        self.db.temp_session_memory_collection.update_one(
+            {
+                "interview_id" : interview_id,
+                "user_id" : user_id
+            },
+            {
+                "$set" : update_data,
+                "$inc": {
+                        "turn_count": 1 
+                        }
+            }
+        )
+        print("Session Memory Updated..!")
+
+
+    #Episodic Memory will be in MongoDB:
+    async def update_episodic_memory(self, interview_id : str, user_id : str, memory : EpisodicMemory):
+
+        episodic_memory_data = memory.model_dump(exclude_none=True)
+        update_data = {
+            f"{key}" : value 
+            for key, value in episodic_memory_data.items()
+        }
+        print(update_data)
+
+        self.db.temp_session_memory_collection.update_one(
+            {
+                "interview_id" : interview_id,
+                "user_id" : user_id
+            },
+            {
+                "$set" : episodic_memory_data
+            }
+        )
+        print("Episodic Memory Updated..!")
+
+
+    #Procedural Memory will be in MongoDB:
+    async def update_procedural_memory(self, interview_id : str, memory : ProceduralMemory):
+
+        session_memory_data = memory.model_dump(exclude_none=True)
+        update_data = {
+            f"{key}" : value 
+            for key, value in session_memory_data.items()
+        }
+        print(update_data)
+
+        self.db.temp_session_memory_collection.update_one(
+            {
+                "interview_id" : interview_id
+            },
+            {
+                "$set" : update_data,
+                "$inc": {
+                        "turn_count": 1 
+                        }
+            }
+        )
+        print("Procedural Memory Updated..!")
+
