@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from contextlib import asynccontextmanager
 import os
 import sys
 os.pardir
@@ -12,8 +13,30 @@ if parent_dir not in sys.path:
 from api.routes import interview
 from api.routes import health
 from api.routes import sse
+from api.container.application_container import ApplicationContainer
 
-app = FastAPI(title="AgeT FastAPI Backend Service", version="1.0.0")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+
+    container = ApplicationContainer()
+    
+    app.state.container = container
+
+    await container.startup()
+    
+    try:
+
+        yield
+
+    finally:
+
+        await container.shutdown()
+
+
+
+app = FastAPI(title="AgeT FastAPI Backend Service", version="1.0.0", lifespan=lifespan)
 
 app.include_router(router=interview.router)
 app.include_router(router=health.router)

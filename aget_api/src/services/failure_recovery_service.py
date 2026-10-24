@@ -14,8 +14,8 @@ from data_models.session_memory import InterviewStatus, InterviewState
 from data_models.conversation_context import ConversationContext
 
 class FailureRecoveryService:
-    def __init__(self):
-        self.redis_service = RedisService()
+    def __init__(self, redis_service : RedisService):
+        self.redis_service = redis_service
 
     async def recover(self, state : AgentState) -> ConversationContext:
 

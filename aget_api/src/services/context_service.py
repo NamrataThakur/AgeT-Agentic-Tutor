@@ -13,12 +13,12 @@ from data_models.execution_result import AgentType
 from data_models.agent_context import AgentContext
 
 class ContextService:
-    def __init__(self):
+    def __init__(self, context_builder_registry : ContextBuilderRegistry):
         #The context builder registry that will map agent name with the class name for the CB for that agent
-        self.context_registry = ContextBuilderRegistry()
+        self.context_registry = context_builder_registry
        
 
-    def load_context(self, agent_name : str, context : AgentContext):
+    async def load_context(self, agent_name : str, context : AgentContext | dict):
         # Check if we have builder for this agent:
         if self.context_registry.has_builder(agent_name=agent_name):
 
@@ -29,6 +29,6 @@ class ContextService:
             raise ValueError(f"No context builder registered for agent: {agent_name}")
 
         # Call the builder's function i.e. build_context using common context to agent specific context:
-        context = builder.build_context(common_context=context)
+        context = await builder.build_context(common_context=context)
 
         return context
