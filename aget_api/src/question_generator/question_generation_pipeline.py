@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
-
+import uuid
 from typing import List, Dict, Set
 from langchain_core.documents import Document
 from pymongo import MongoClient
@@ -29,13 +29,14 @@ if parent_dir not in sys.path:
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
-
 from db.mongo import MongoDb
 from graphRag.graph_retrieval_pipeline import GraphRAGPipeline
 from config.settings import settings
 from data_models.topic_packet import TopicPacket
 from data_models.question import QuestionAllBatch
 from data_models.concept_bucket_llm import BucketBatch
+from data_models.concept_bucket_global import GlobalConcepBucket
+from services.bucket_service import BucketService
 from question_generator.question_bank_generation import QuestionGenerator
 from question_generator.save_question_bank import QuestionBankSave
 from prompts.concept_bucket_generation_prompt import CONCEPT_BUCKET_GENERATION_SYSTEM_PROMPT, CONCEPT_BUCKET_GENERATION_USER_PROMPT
@@ -56,22 +57,36 @@ from prompts.concept_bucket_generation_prompt import CONCEPT_BUCKET_GENERATION_S
 #Step 11: Entity Bucketing: (Done)
 #Step 12: Update QS Bank with Bucket info: (Done)
 #Step 13: Insert into DB: (Done)
-#STep 14: Save Question Bank in local for downstream tasks: (Done)
+#Step 14: Create Global Bucket Level Question Count Collection: (Done)
+#Step 15: Insert the Global Bucket Count info into DB: (Done)
+#Step 16: Check Bucket Health by fetching from DB:
+#Step 17: If any bucket-level is below threshold, trigger bucket regeneration for them: This will update the Question Bank:
+#Step 18: Check Bucket Health by fetching from DB (again): Validate that all buckets are healthy:
+#Step 19: Return this validated global bucket collection:
+#Step 20: Fetch from DB the latest updated question bank:
+#Step 21: Save Updated Question Bank in local for downstream tasks: 
+
 #------------------ STEPS ----------------------------------------------------
 
 class QuestionFullGenerationPipeline:
-    def __init__(self):
+    def __init__(self, db: MongoDb , bucket_service : BucketService):
 
         
-        self.db = MongoDb()
+        self.db = db
         self.mode = "full"
 
         #Read the parameter values from the settings.py file:
         self.graph_retrieval = GraphRAGPipeline(db = self.db)
         self.qs_generator = QuestionGenerator()
         self.qs_save = QuestionBankSave(db = self.db)
-        self.llm = ChatOpenAI(name=settings.MODEL_NAME_QS_GEN, temperature=settings.MODEL_TEMPERATURE, 
-                        api_key=openai_api_key, max_tokens=settings.MAX_TOKENS, max_retries=settings.MAX_RETRIES)
+
+        self.llm = ChatOpenAI(name=settings.MODEL_NAME_QS_GEN, 
+                              temperature=settings.MODEL_TEMPERATURE, 
+                                api_key=openai_api_key, 
+                                max_tokens=settings.MAX_TOKENS, 
+                                max_retries=settings.MAX_RETRIES)
+        
+        self.bucket_service = bucket_service
 
 
 
@@ -184,27 +199,36 @@ class QuestionFullGenerationPipeline:
 
         for bucket in bucket_info:
             for concept in bucket["primary_concepts"]:
-                concept_to_bucket[concept] = bucket["bucket_name"]
+                concept_to_bucket[concept] = {
+                        "bucket_name" : bucket["bucket_name"],
+                        "bucket_id" : bucket["bucket_id"]
+                    }
 
             #If the primary concept not found, then use seconday concept
             for concept in bucket["secondary_concepts"]:
                 if concept not in concept_to_bucket:
-                    concept_to_bucket[concept] = bucket["bucket_name"]
+                    concept_to_bucket[concept] = {
+                            "bucket_name" : bucket["bucket_name"],
+                            "bucket_id" : bucket["bucket_id"]
+                        }
                     
         
         #--- Assign bucket name to each question ----
         for question in questions_bank:
             primary_concept = question["question"]["primary_concept"]
-            bucket_name = concept_to_bucket.get(primary_concept, "Uncategorized")
-            question["bucket_name"] = bucket_name
+            bucket_details = concept_to_bucket.get(primary_concept, "Uncategorized")
+            question["bucket_name"] = bucket_details["bucket_name"]
+            question["bucket_id"] = bucket_details["bucket_id"]
 
 
         return questions_bank
     
     
-    def full_QSBank_generation_pipeline(self, user_query: str ):
+    async def full_QSBank_generation_pipeline(self, user_query: str ):
 
         start = time.perf_counter()
+
+        hashes = {}
 
         #Step 1: Create the retrieval packets for the input topic: 
         topic_packets = self.graph_retrieval.pipeline(query=user_query, 
@@ -216,9 +240,14 @@ class QuestionFullGenerationPipeline:
         entity_buckets = self.create_entity_buckets(unique_entities=list(topic_packets["core_concepts"]), 
                                                     topic = topic_packets["topic_id"])
 
+        #Adding unique bucket id:
+        for bucket in entity_buckets:
+            bucket["bucket_id"] = str(uuid.uuid4())
+
         #Step 2: Get the latest knowledge hash from the DB:
         kb_hash_info = self.get_knowledge_hash(topic_id=topic_packets["topic_id"])
         knowledge_hash = kb_hash_info[0]["knowledge_hash"]
+        hashes["kn_hash"] = knowledge_hash
         print("Latest Knowledge Hash Fetched..!")
 
         #Step 3: Insert the topic packet into the DB:
@@ -234,12 +263,15 @@ class QuestionFullGenerationPipeline:
 
         #Step 4: Get the appropiate prompt considering the difficulty level from the MongoDB:
         easy_prompt = self.get_prompt(difficulty="easy", status="test")
+        hashes["easy"] = easy_prompt[0]["prompt_hash"]
         print(f"Easy Prompt Version Selected : {easy_prompt[0]['version']}")
 
         medium_prompt = self.get_prompt(difficulty="medium", status="test")
+        hashes["medium"] = medium_prompt[0]["prompt_hash"]
         print(f"Medium Prompt Version Selected : {medium_prompt[0]['version']}")
 
         hard_prompt = self.get_prompt(difficulty="hard", status="test")
+        hashes["hard"] = hard_prompt[0]["prompt_hash"]
         print(f"Hard Prompt Version Selected : {hard_prompt[0]['version']}")
         print("-------------------- PROMPTS FETCHED FROM DB SUCCESSFULLY  --------------------")
 
@@ -285,20 +317,38 @@ class QuestionFullGenerationPipeline:
         self.db.ingest_question_bank(qs_bank=hard_qs_model.question_batch)
         print("Question Bank for HARD Questions Inserted in MongoDB Successfully..!")
 
+
+        #Step 14: Create Global Bucket Level Question Count Collection:
+        global_bucket = await self.bucket_service.bucket_creation(topic_id=topic_packets["topic_id"],
+                                                                bucket_info=entity_buckets,
+                                                                question_bank = full_qs_bank)
+
+        #Step 15: Insert the Global Bucket Count info into DB:
+        global_bucket_model = GlobalConcepBucket.model_validate(global_bucket)
+        self.db.ingest_global_bucket(global_buckets=[global_bucket_model])
+        global_bucket_list = global_bucket.model_dump()
+
+        #Step 16: Check Bucket Health by fetching from DB:
+        global_bucket_health = await self.bucket_service.get_bucket_health(bucket_details=global_bucket_list)
+
+        #Step 17 - 21: If any bucket-level is below threshold, trigger bucket regeneration for them: 
+        # This will update the Question Bank and the global bucket bank:
+        full_qs_bank, global_bucket_list = await self.bucket_service.bucket_regeneration(bucket_health=global_bucket_health)
+
+
+        #Step 21: Save Question Bank in local for downstream tasks:
+        #full_qs_bank = self.qs_save.save_qs_bank()
         print("==================================================================================")
 
-
-        #STep 14: Save Question Bank in local for downstream tasks:
-        self.qs_save.save_qs_bank()
-
         end = time.perf_counter()
+        message = "Question Bank Generation Complete..!"
         print(f"Pipeline completed in {end - start:.2f} seconds")
 
-        return "Question Bank Generation Complete..!"
+        return full_qs_bank, message, hashes, global_bucket_list
     
 
 if __name__ == "__main__":
-    qs_gen = QuestionFullGenerationPipeline()
+    qs_gen = QuestionFullGenerationPipeline(db=MongoDb())
     res = qs_gen.full_QSBank_generation_pipeline(user_query="ask me on logistic regression")
     print(res)
 

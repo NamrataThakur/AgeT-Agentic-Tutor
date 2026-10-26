@@ -34,7 +34,7 @@ class QuestionBankSave:
     def __init__(self, db : MongoClient):
         self.db = db
 
-    def save_qs_bank(self):
+    def save_qs_bank(self) -> list:
 
         qs_bank = []
 
@@ -63,6 +63,8 @@ class QuestionBankSave:
         file_path = settings.INTERMITTENT_DATA / "Question_Bank.json"
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(qs_bank, f, indent=4)
+
+        return qs_bank
 
 
 # if __name__ == "__main__":
