@@ -17,22 +17,23 @@ from agents.planner_policy import PlannerPolicy
 
 
 class PlannerNode:
-    def __init__(self):
-        self.planner_agent = PlannerAgent()
-        self.planner_policy = PlannerPolicy()
+    def __init__(self, planner: PlannerAgent, policy : PlannerPolicy):
+        self.planner_agent = planner
+        self.planner_policy = policy
 
-    async def execute(self, state : AgentState):
+    async def execute(self, state : AgentState) -> dict:
         print("Flow Reached Planner")
 
         session_memory = state["conversation_context"].session_memory
 
         if state["execution_result"] is None:
-            execution_result = state["conversation_context"].session_memory.last_eval_result
+            execution_result = state["conversation_context"].session_memory.last_execution_result
         else:
             execution_result = state["execution_result"]
 
         allowed_skills = await self.planner_policy.get_allowed_skills(session_memory=session_memory, execution_result=execution_result)
 
+        #Call the Planner Agent to get the required skill to invoke through the Executor Node:
         llm_response = await self.planner_agent.invoke(state=state, allowed_skills=allowed_skills)
 
         #Assign Action types based on Skill Chosen:

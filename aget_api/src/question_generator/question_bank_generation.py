@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
-
+import re
+import unicodedata
 from typing import List, Dict, Set
 from langchain_core.documents import Document
 from pymongo import MongoClient
@@ -34,8 +35,10 @@ if parent_dir not in sys.path:
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 from config.settings import settings
-from data_models.question_bank_llm import QuestionGenAllBatch
+from data_models.question_bank_llm import QuestionGenAllBatch, QuestionGenLLM
 from embeddings.embedders import EmbeddingsCreator
+from data_models.concept_classification import ConceptClassify
+from prompts.concept_classification_prompt import CONCEPT_CLASSIFICATION_SYSTEM_PROMPT, CONCEPT_CLASSIFICATION_USER_PROMPT
 
 #------------------ STEPS ----------------------------------------------------
 #PIPELINE DESCRIPTION ::::: 
@@ -52,6 +55,8 @@ class QuestionGenerator:
         self.llm = ChatOpenAI(name=settings.MODEL_NAME_QS_GEN, temperature=settings.MODEL_TEMPERATURE, 
                         api_key=openai_api_key, max_tokens=settings.MAX_TOKENS, max_retries=settings.MAX_RETRIES)
         self.embedders = EmbeddingsCreator(embed_model_type=settings.MODEL_TYPE)
+
+        self.lookup_dict = {}
 
     def render_paths(self, concept_paths : Dict) -> str:
 
@@ -178,7 +183,13 @@ class QuestionGenerator:
                                                 }
                                             )
                 return qs_gen_output
-                
+            
+            # ---------- Don't Retry ----------
+            except BadRequestError as e:
+
+                print(f"Bad Request: {e}")
+                raise   
+
             # ---------- Retryable ----------
             except Exception as e:
                 print("----------------------------------------------------")
@@ -190,18 +201,194 @@ class QuestionGenerator:
 
                 time.sleep(2 ** attempt)
 
+
+    # ---------------------------------------------------------
+    # Normalization
+    # ---------------------------------------------------------
+    def concept_normalization(self, value: str) -> str:
+        if not value:
+            return ""
+
+        value = unicodedata.normalize("NFKC", value)
+
+        value = value.lower().strip()
+
+        # Replace separators
+        value = value.replace("_", " ")
+        value = value.replace("-", " ")
+
+        # Remove punctuation
+        value = re.sub(r"[^\w\s]", " ", value)
+
+        # Collapse whitespace
+        value = re.sub(r"\s+", " ", value)
+
+        return value.strip()
+
+
+    def concept_lookup(self, core_concepts: List[str]) -> Dict[str, str]:
+
+        self.lookup_dict = {self.concept_normalization(concept) : concept for concept in core_concepts}
+        
+
+    # ---------------------------------------------------------
+    # Deterministic validation
+    # ---------------------------------------------------------
+    def concept_validation(self, generated_concept: str):
+
+        normalized_concept = self.concept_normalization(value=generated_concept)
+        validated = self.lookup_dict.get(normalized_concept, None)
+
+        return validated
+
+
+    def get_top_candidate_concepts(self, concept: str, core_concepts : List[str], top_k : int = 5):
+        core_concepts_embedding = np.asarray(self.embedders.get_query_embeddings(query = core_concepts))
+        primary_concept_embedding = np.asarray(self.embedders.get_query_embeddings(query=concept))
+
+        # X.shape --> N * 768 (embedding dimension), Y.shape --> 768 (vector). 
+        # After Y reshape, Y.shape --> 768 * 1
+        # Similarity Matrix shape --> (N*768) X (768*1) = N * 1 (vector)
+        similarity_matrix = cosine_similarity(X=core_concepts_embedding, Y=primary_concept_embedding.reshape(1, -1))
+        scores = similarity_matrix[:, 0]
+
+        top_indices = np.argsort(scores)[::-1][:top_k]
+        top_concepts = [(core_concepts[i], scores[i]) for i in top_indices if scores[i] >= settings.CONCEPT_SIM_THRESHOLD]
+        return top_concepts
+
+
+    def classify_concepts_llm(self, question, primary_concept, secondary_concepts, candidate_concepts) -> ConceptClassify:
+
+        prompt = ChatPromptTemplate.from_messages(
+                                                    [
+                                                        ("system", CONCEPT_CLASSIFICATION_SYSTEM_PROMPT),
+                                                        ("user", CONCEPT_CLASSIFICATION_USER_PROMPT)
+                                                    ]
+                                                )
+
+
+        structured_llm = self.llm.with_structured_output(ConceptClassify)
+
+        chain = prompt | structured_llm
+
+        for attempt in range(1, settings.MAX_RETRIES + 1):
+
+            try:
+
+                qs_gen_output =  chain.invoke(
+                                                {
+                                                "question": question.model_dump(),
+                                                "primary_concept": primary_concept,
+                                                "secondary_concepts" : secondary_concepts,
+                                                "candidate_concepts" : candidate_concepts
+                                                }
+                                            )
+                return qs_gen_output
+
             # ---------- Don't Retry ----------
             except BadRequestError as e:
 
                 print(f"Bad Request: {e}")
                 raise
-
+    
+            # ---------- Retryable ----------
             except Exception as e:
+                print("----------------------------------------------------")
+                print(f"[Attempt {attempt}/{settings.MAX_RETRIES}] " 
+                        f"Transient error: {str(e)}")
 
-                print(f"Unexpected Exception: {e}")
-                raise
+                if attempt == settings.MAX_RETRIES:
+                    raise
 
+                time.sleep(2 ** attempt)
+
+
+    
+    def validate_question(self, question : QuestionGenLLM, core_concepts : List[str]) -> QuestionGenLLM | None:
+
+        #Build the look-up dictionary:
+        self.concept_lookup(core_concepts=core_concepts)
         
+        # -----------------------------------------
+        # 1. Try deterministic resolution
+        # -----------------------------------------
+        primary_resolved = self.concept_validation(generated_concept=question.primary_concept)
+
+        secondary_concepts_validated = []
+        for concept in question.secondary_concepts:
+            resolved= self.concept_validation(generated_concept=concept)
+            if resolved:
+                secondary_concepts_validated.append(resolved)
+            else:
+                secondary_concepts_validated.append(concept)
+
+
+        # ---------------------------------------------------------------------------------
+        # If primary concept is resolved, return the question as validation is complete
+        # ---------------------------------------------------------------------------------
+        if primary_resolved is not None:
+            question.primary_concept = primary_resolved
+            question.secondary_concepts = secondary_concepts_validated
+
+            return question
+
+
+        # -----------------------------------------
+        # 2. Primary concept unresolved
+        # -----------------------------------------
+        candidate_concepts = self.get_top_candidate_concepts(concept=question.primary_concept, 
+                                                             core_concepts=core_concepts,
+                                                             top_k=5)
+
+        # -----------------------------------------
+        # 3. LLM classification
+        # -----------------------------------------
+        result = self.classify_concepts_llm(question=question, primary_concept=question.primary_concept, 
+                                            secondary_concepts=secondary_concepts_validated,
+                                            candidate_concepts=candidate_concepts)
+
+
+        # -----------------------------------------
+        # 4. Validate LLM result
+        # -----------------------------------------
+        if result.primary_concept is None:
+            return None
+
+        primary_resolved = self.concept_validation(generated_concept=result.primary_concept)
+
+        if primary_resolved is None:
+            return None
+
+        question.primary_concept = primary_resolved
+
+        secondary_resolved = []
+
+        for sec_con in result.secondary_concepts:
+            val_sec = self.concept_validation(generated_concept=sec_con)
+            if val_sec is not None:
+                secondary_resolved.append(val_sec)
+            else:
+                secondary_resolved.append(sec_con)  
+
+        question.secondary_concepts = secondary_resolved
+
+        return question
+
+
+
+    def question_bank_validation(self, core_concepts : List[str], question_bank : QuestionGenAllBatch) -> QuestionGenAllBatch:
+
+        validated_questions = []
+
+        for question in question_bank.question_gen_batch:
+            qs = self.validate_question(core_concepts=core_concepts, question=question)
+
+            if qs is not None:
+                validated_questions.append(qs)
+
+        validated_questions_model = QuestionGenAllBatch.model_validate(question_gen_batch=validated_questions)
+        return validated_questions_model
+
 
     def create_question_semantic_clusters(self, questions: List[Dict]) -> List[Dict]:
 
@@ -255,7 +442,10 @@ class QuestionGenerator:
                                             num_questions=num_questions )
 
 
-        for qs in questions.question_gen_batch:
+        validated_questions = self.question_bank_validation(core_concepts=topic_info["core_concepts"], 
+                                                            question_bank=questions)
+
+        for qs in validated_questions.question_gen_batch:
             obj = {
                     "topic" : topic_info["topic_id"],
                     "knowledge_hash" : topic_info["knowledge_hash"],
@@ -270,9 +460,11 @@ class QuestionGenerator:
 
                     "generator_version" : settings.MODEL_NAME_QS_GEN,
                     "created_at" : datetime.today(),
-                    "usage": {"times_asked" : 0, "last_asked_at" : None,
-                              "correct_count" : 0, "wrong_count" : 0, "average_score" : 0.00
-                            }
+
+                    # Usage is not tracked here because usage is user specific, whereas question bank is user agnostic
+                    # "usage": {"times_asked" : 0, "last_asked_at" : None,
+                    #           "correct_count" : 0, "wrong_count" : 0, "average_score" : 0.00
+                    #         }
                 }
             
             question_bank.append(obj)

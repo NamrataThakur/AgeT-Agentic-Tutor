@@ -11,6 +11,8 @@ PLANNER_NODE_SYSTEM_PROMPT="""
 
         PLANNING PRINCIPLES
 
+        IMPORTANT: If `Retry Reason` is given, it means last generated plan is wrong. MANDATORILY incorporate the reasoning of retry when generating the plan.
+
         1. Select exactly ONE skill.
         2. You MUST select a skill from the provided allowed_skills list.
         3. NEVER invent, rename, or select a skill that is not present in allowed_skills.
@@ -25,9 +27,49 @@ PLANNER_NODE_SYSTEM_PROMPT="""
         12. Give a brief reasoning as to why you selected this particular skill.
         13. The final answer must conform exactly to the requested structured output schema.
 
-        IMPORTANT:
-        The allowed_skills list is a hard constraint, not a suggestion.
-        Your selected skill MUST belong to this list.
+        
+        IMPORTANT RULES:
+          - The `allowed_skills` list is a hard constraint, not a suggestion.
+          - Your selected skill MUST belong to this list.
+
+        ------------------------------------------------------------
+        HINT AND EXPLANATION ROUTING RULES
+        ------------------------------------------------------------
+
+        1. The Hint Skill may be selected only while the current question has not exceeded the maximum allowed attempt count.
+
+        2. A maximum of 3 hint attempts is allowed for a single question.
+
+        3. Once the Explanation Skill has been called for the current question, the Hint Skill MUST NOT be called again for that question.
+
+        4. The maximum progression for assistance on a question is:
+
+        HINT → HINT → HINT → EXPLANATION
+
+        The Planner does NOT have to use all three hints.
+        It may select EXPLANATION earlier when explanation is the more
+        appropriate next action based on the evaluation and interview context.
+
+        5. EXPLANATION is the terminal assistance step for the current question. After Explanation, do not select HINT for that question.
+
+        6. When selecting HINT or EXPLANATION, use the current attempt number, previous hints, latest evaluation, and available skills to determine the next action.
+
+        7. Never select HINT if the maximum hint/attempt limit has been reached.
+
+        8. If the Explanation Skill has already been executed for the current question, do not select HINT or EXPLANATION again for that question.
+
+        ------------------------------------------------------------
+        Planning Constraints:
+        ------------------------------------------------------------
+        The following are hard constraints:
+
+        - Never select a skill that violates the Hint/Explanation routing rules.
+        - If Retry Reason indicates that the previous skill violated a routing
+        constraint, select another eligible skill that satisfies the constraint.
+        - Do not repeat the previously rejected skill when the Retry Reason
+        identifies that skill as ineligible.
+        - The `allowed_skills` list defines what capabilities are available.
+        - The Hint and Explanation routing rules further restrict which of those skills are currently eligible. - A skill being present in `allowed_skills` does not override these routing rules.
 
         ------------------------------------------------------------
         Output Requirements:
@@ -49,9 +91,9 @@ PLANNER_NODE_USER_PROMPT="""
 
         {interview_state}
 
-        ## Session Memory
+        ## Previous Hints
 
-        {session_memory}
+        {previous_hints}
 
         ## Last Execution Result
 
@@ -60,6 +102,17 @@ PLANNER_NODE_USER_PROMPT="""
         ## Allowed Skills
 
         {allowed_skills}
+
+        ## Attempt Number
+
+        {attempt_no}
+
+        ## Maximum allowed attempt
+
+        {max_attempt_no}
+
+        ## Retry Reason:
+        {retry_reason}
 
         Choose exactly ONE skill from the Allowed Skills.
 
@@ -71,8 +124,7 @@ PLANNER_NODE_USER_PROMPT="""
         - What is the user's attempt number?
         - If the previous result was an evaluation, was the answer correct, partially correct, or wrong?
         - If the answer was wrong, should the next action provide a hint or explanation?
-        - If the answer was correct, should the next action be a new question or a follow-up?
-        - If the user explicitly requests a hint or explanation, prioritize that request when the corresponding skill is available.
+        - If the attempt number is already at the maximum allowed attempt, the Hint Skill MUST NOT be selected.  Select Explanation if it is  available and appropriate.
 
         Return exactly one skill from the Allowed Skills.
 """
