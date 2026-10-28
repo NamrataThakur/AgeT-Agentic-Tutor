@@ -22,7 +22,7 @@ EXPLANATION_GENERATION_SYSTEM_PROMPT="""
             - REFERENCE ANSWER: The authoritative answer for the current question.
             - REFERENCE KEY POINTS: The authoritative key points expected in a correct answer.
             - PRIMARY CONCEPT: The primary technical concept assessed.
-            - ALL CONCEPTS: All concepts including primary and secondary concepts assessed by the question.
+            - REFERENCE CONCEPTS: All concepts including primary and secondary concepts assessed by the question.
 
             
         ------------------------------------------------------------
@@ -53,20 +53,81 @@ EXPLANATION_GENERATION_SYSTEM_PROMPT="""
 
         The response contains two structured grounding fields:
 
-        `key_points_addressed`
+        ------------------------------------------------------------
+        KEY POINTS:
+        ------------------------------------------------------------
 
-        - Every value MUST be copied EXACTLY from REFERENCE KEY POINTS.
-        - DO NOT paraphrase, shorten, combine, or modify reference key points.
-        - Include the reference key points that are actually addressed by the explanation.
-        - When the latest evaluation contains `key_points_missed`, ensure the explanation addresses the relevant missed key points and include those exact values in `key_points_addressed`.
+        The field `key_points_addressed` MUST contain only reference key-point IDs supplied in the execution context.
 
-        `concepts_addressed`
+        For example, if the context contains:
 
-        - Every value MUST be copied EXACTLY from PRIMARY CONCEPT or ALL CONCEPTS.
-        - DO NOT invent, paraphrase, or modify concept names.
-        - Include only concepts that are actually addressed by the explanation.
-        - When the latest evaluation contains `concepts_missed`, ensure the explanation addresses the relevant missed concepts and include those exact values in `concepts_addressed`.
+        REFERENCE KEY POINTS:
+                KP1: "Contrasts the prediction targets of logistic regression and linear regression"
+                KP2: "Explains the preference for logistic regression in modeling limited categorical outcomes"
+                KP3: "Describes how logistic regression models the log-odds of events for categorical predictions"
 
+        then the output MUST contain only IDs:
+                - KP1
+                - KP2
+                - KP3
+
+        Valid output values are therefore:
+                key_points_addressed:
+                ["KP1", "KP2"]
+
+
+        You MUST NOT:
+        - Create a new key point.
+        - Modify a key point.
+        - Paraphrase a key point.
+        - Return the key-point text instead of its ID.
+        - Return a key-point ID that does not exist in the supplied context.
+
+        IMPORTANT RULES:
+            - Every value MUST be an exact key-point ID supplied in REFERENCE KEY POINTS.
+            - DO NOT return the key-point text.
+            - DO NOT paraphrase or modify the key-point ID.
+            - Include only key-point IDs that are actually addressed by the explanation.
+            - When the latest evaluation contains `key_points_missed`, ensure the explanation addresses the relevant missed key points and include their exact IDs in `key_points_addressed`.
+
+
+        ------------------------------------------------------------
+        CONCEPTS:
+        ------------------------------------------------------------
+
+        The field `concepts_addressed` MUST contain only concept IDs supplied in the execution context.
+
+        For example:
+
+        REFERENCE CONCEPTS:
+                C1: logistic regression
+                C2: sigmoid function
+                C3: linear regression
+
+        The output may contain only:
+                - C1
+                - C2
+                - C3
+
+        Valid output values are therefore:
+                concepts_addressed:
+                ["C1", "C2"]
+
+
+        You MUST NOT:
+        - Create a new concept.
+        - Modify or paraphrase a concept.
+        - Return concept text instead of its ID.
+        - Return a concept ID that does not exist in the supplied context.
+
+        IMPORTANT RULES:
+            - Every value MUST be an exact concept ID supplied in REFERENCE CONCEPTS.
+            - DO NOT return the concept text.
+            - DO NOT paraphrase or modify the concept ID.
+            - Include only concept IDs that are actually addressed by the explanation.
+            - When the latest evaluation contains `concepts_missed`, ensure the explanation addresses the relevant missed concepts and include their exact IDs in `concepts_addressed`.
+            
+        
         The structured grounding fields are used for deterministic validation by the application. Therefore, exact string matching is required.
 
         The `explanation` itself may use natural language and does not need to copy the reference wording.
@@ -80,8 +141,8 @@ EXPLANATION_GENERATION_SYSTEM_PROMPT="""
         Return:
 
         - `explanation`: The complete candidate-facing explanation.
-        - `key_points_addressed`: Exact reference key point values addressed by the explanation.
-        - `concepts_addressed`: Exact assessed concept values addressed by the explanation.
+        - `key_points_addressed`: Exact reference key point IDs addressed by the explanation, not text.
+        - `concepts_addressed`: Exact assessed concept IDs addressed by the explanation, not text.
 
         The explanation should follow this flow:
             candidate's answer
@@ -122,7 +183,7 @@ EXPLANATION_GENERATION_USER_PROMPT="""
         PRIMARY CONCEPT:
         {primary_concept}
 
-        ALL CONCEPTS:
+        REFERENCE CONCEPTS:
         {concepts}
 
         INSTRUCTIONS:
@@ -140,6 +201,31 @@ EXPLANATION_GENERATION_USER_PROMPT="""
         9. End with the most important technical takeaway.
         10. DO NOT simply copy the reference answer; tailor the explanation to this candidate's response.
 
+        
+        For key-point classification, return ONLY the corresponding KP IDs.
+        
+        For concept classification, return ONLY the corresponding C IDs.
+
+        Example:
+
+        REFERENCE KEY POINTS:
+        KP1: Sigmoid converts logits into probability.
+        KP2: Logistic regression models binary outcomes.
+        KP3: Parameters are estimated using maximum likelihood.
+
+        REFERENCE CONCEPTS:
+        C1: logistic regression
+        C2: sigmoid function
+        C3: maximum likelihood
+
+        Valid output values are therefore:
+
+        key_points_addressed:
+        ["KP1", "KP2"]
+
+        concepts_addressed:
+        ["C1", "C2"]
+
         STRUCTURED GROUNDING:
 
         For `key_points_addressed`:
@@ -148,13 +234,15 @@ EXPLANATION_GENERATION_USER_PROMPT="""
         - Copy each selected value EXACTLY from REFERENCE KEY POINTS.
         - DO NOT paraphrase or invent values.
         - Prioritize the relevant values from `key_points_missed` in the latest evaluation.
+        - Return ONLY key point ID, not the textual description.
 
         For `concepts_addressed`:
 
         - Select ONLY concepts that the explanation actually addresses.
-        - Each value must match EXACTLY either PRIMARY CONCEPT or one of ALL CONCEPTS.
+        - Each value must match EXACTLY one of REFERENCE CONCEPTS.
         - DO NOT invent or paraphrase concept names.
         - Prioritize the relevant values from `concepts_missed` in the latest evaluation.
+        - Return ONLY concept ID, not the textual description.
 
         Return only the structured response.
 
