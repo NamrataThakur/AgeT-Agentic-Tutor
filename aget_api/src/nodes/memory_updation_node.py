@@ -12,8 +12,12 @@ from graph.state import AgentState
 from services.memory_service import MemoryService
 
 class MemoryUpdateNode:
-    def __init__(self):
-        self.memory_service = MemoryService()
+    def __init__(self, memory_service : MemoryService):
+        self.memory_service = memory_service
 
-    async def execute(self, state : AgentState):
-        return
+    async def execute(self, state : AgentState) -> dict:
+        context = await self.memory_service.save_memories(state=state)
+        
+        return {
+            "conversation_context" : context
+        }

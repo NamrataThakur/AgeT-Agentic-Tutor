@@ -12,13 +12,14 @@ from graph.state import AgentState
 from services.memory_service import MemoryService
 
 class MemoryManagerNode:
-    def __init__(self):
-        self.memory_service = MemoryService()
+    def __init__(self, memory_service : MemoryService):
+        self.memory_service = memory_service
 
     async def execute(self, state : AgentState) -> dict:
 
-        context = await self.memory_service.get_or_create_services(state=state)
+        context, resume_state = await self.memory_service.get_or_create_services(state=state)
 
         return {
-            "conversation_context" : context
+            "conversation_context" : context,
+            "resume_state" : resume_state if resume_state else None
         }
