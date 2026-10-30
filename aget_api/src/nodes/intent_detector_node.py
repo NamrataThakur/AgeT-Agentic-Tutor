@@ -13,16 +13,18 @@ if parent_dir not in sys.path:
 
 from graph.state import AgentState
 from agents.intent_detector_agent import IntentDetectionAgent
-from tools.topic_detection import TopicDetection
+from app_tools.topic_detection import TopicDetection
 from data_models.session_memory import SessionMemory, InterviewState
 from data_models.conversation_context import ConversationContext
 from services.mongodb_service import MongoDBService
 
 class IntentDetectorNode:
-    def __init__(self):
-        self.intent_detector_agent = IntentDetectionAgent()
-        self.topic_detector = TopicDetection()
-
+    def __init__(self, intent_detection_agent : IntentDetectionAgent, 
+                 topic_detector : TopicDetection):
+        
+        self.intent_detector_agent = intent_detection_agent
+        self.topic_detector = topic_detector
+        
         #To Be used only for local testing in the absence of Redis:
         self.mongo_service = MongoDBService()
 
@@ -53,12 +55,15 @@ class IntentDetectorNode:
                                                interview_state=InterviewState.INTERVIEW_STARTED) #interview state going as null in mongodb --> fix it
                 print(session_memory)
     
-                #To Be used only for local testing in the absence of Redis:
+                #--- To Be used only for local testing in the absence of Redis ----:
                 await self.mongo_service.update_session_memory(interview_id=state["interview_id"], 
                                                             memory=session_memory)
     
                 #To be used for Prod testing in the presence of Redis:
+                #Redis Update will happen ONLY ONCE in the memory_update node:
+
                 conversation_context.session_memory = session_memory
+                
                 return Command(update={
                                 "topic" : topic,
                                 "response" : message,
@@ -89,14 +94,18 @@ class IntentDetectorNode:
             else:
                 topic = topic_obj[0].id
                 print("Topic Detected From New User Input : ", topic)
-                #To Be used only for local testing in the absence of Redis:
+
+                #--- To Be used only for local testing in the absence of Redis: ----
                 session_memory = SessionMemory(current_topic=topic,
                                                interview_state=InterviewState.INTERVIEW_STARTED)
                 
                 await self.mongo_service.update_session_memory(interview_id=state["interview_id"], 
                                                             memory=session_memory)
-                
+
+                #To be used for Prod testing in the presence of Redis:
+                #Redis Update will happen ONLY ONCE in the memory_update node:
                 conversation_context.session_memory.current_topic = response.topic
+
                 return Command(update={
                                 "topic" : topic,
                                 "response" : message,
