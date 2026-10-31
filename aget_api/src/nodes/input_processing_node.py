@@ -11,11 +11,11 @@ if parent_dir not in sys.path:
 
 from graph.state import AgentState
 from modules.speech_to_text import SpeechToText
-from graph.state import AgentState
+
 
 class InputProcessingNode:
-    def __init__(self):
-        self.speech_to_text_processing = SpeechToText()
+    def __init__(self, speech_module : SpeechToText):
+        self.speech_to_text_processing = speech_module
 
     async def execute(self, state: AgentState) -> dict:
 

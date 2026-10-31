@@ -17,8 +17,8 @@ from services.failure_recovery_service import FailureRecoveryService
 
 
 class FailureHandlerNode:
-    def __init__(self):
-        self.recovery_service = FailureRecoveryService()
+    def __init__(self, recovery_service : FailureRecoveryService):
+        self.recovery_service = recovery_service
 
     async def execute(self, state: AgentState) -> dict:
 
