@@ -333,7 +333,9 @@ class QuestionFullGenerationPipeline:
 
         #Step 17 - 21: If any bucket-level is below threshold, trigger bucket regeneration for them: 
         # This will update the Question Bank and the global bucket bank:
-        full_qs_bank, global_bucket_list = await self.bucket_service.bucket_regeneration(bucket_health=global_bucket_health)
+        full_qs_bank, global_bucket_list = await self.bucket_service.bucket_regeneration(bucket_health=global_bucket_health,
+                                                                                         topic_packets = topic_packets,
+                                                                                         topic=topic_packets["topic_id"])
 
 
         #Step 21: Save Question Bank in local for downstream tasks:
