@@ -9,10 +9,11 @@ if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
 from graph.state import AgentState
+from agents.executor_agent import ExecutorAgent
 
-# STEPS THAT ARE PRESENT WITHIN EXECUTOR NODE:
+# STEPS THAT ARE PRESENT WITHIN EXECUTOR AGENT. EXECUTOR NODE IS A THIN WRAPPER OVER THE EXECUTOR AGENT:
 # ┌─────────────────────────────────────────────┐
-# │                 EXECUTOR NODE               │
+# │                 EXECUTOR AGENT              │
 # │                                             │
 # │  1. Prepare ExecutionRuntime                │
 # │  2. Read Planner output                     │
@@ -50,16 +51,26 @@ from graph.state import AgentState
 #                        │
 #                        ▼
 # ┌─────────────────────────────────────────────┐
-# │                 EXECUTOR NODE               │
+# │                 EXECUTOR AGENT              │
 # │                                             │
 # │ 15. Convert A2AResponse → ExecutionResult   │
 # │ 16. Update LangGraph State                  │
 # └─────────────────────────────────────────────┘
 
 class ExecutorNode:
-    def __init__(self):
-        self.executor_agent = "executor_agent"
+    def __init__(self, executor_agent : ExecutorAgent):
+        self.executor_agent = executor_agent
 
-    def execute(self, state : AgentState):
+    async def execute(self, state : AgentState) -> dict:
 
-        return state
+        conversation_context = state["conversation_context"]
+        execution_result = await self.executor_agent.execute(state=state)
+
+        #Updating the session memory with the execution results
+        conversation_context.session_memory.last_execution_result = execution_result
+
+        return {
+            "execution_result" : execution_result,
+            "conversation_context" : conversation_context,
+            "response" : execution_result.response
+        }
