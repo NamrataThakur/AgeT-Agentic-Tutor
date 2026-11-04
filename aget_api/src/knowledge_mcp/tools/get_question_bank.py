@@ -14,11 +14,21 @@ from infrastructure.background.job_manager import JobManager
 from infrastructure.background.executor import BackgroundExecutor
 from infrastructure.background.job_model import BackgroundJob
 
+from api.container.application_container import ApplicationContainer
+
+container = ApplicationContainer()
+
 class GetQuestionBankTool:
-    def __init__(self):
-        self.qs_service = QsBankService()
-        self.job_manager =JobManager()
-        self.background_executor = BackgroundExecutor()
+    def __init__(self, qs_service : QsBankService,
+                       job_manager : JobManager,
+                       executor : BackgroundExecutor):
+        
+        self.qs_service = qs_service
+        
+        self.job_manager = job_manager
+        
+        self.background_executor = executor
+        
 
     async def get_question_bank(self, request : GetQSBankRequest) -> GetQSBankResponse:
         """
@@ -65,6 +75,7 @@ class GetQuestionBankTool:
             return GetQSBankResponse(topic_id=request.topic_id,
                                      status=QSBankStatus.CREATING,
                                      qs_bank=None,
+                                     bucket_bank=None,
                                      job_id=job.get("job_id"),
                                      eta_in_secs=job.get("eta_seconds"),
                                      message=(
@@ -76,6 +87,7 @@ class GetQuestionBankTool:
 
         #Scenario 2: If Question Bank exists for the topic, then first check its freshness:
         qs_bank = existing_qsBank.qs_bank
+        bucket_bank = existing_qsBank.bucket_details
         kn_hashes = existing_qsBank.existing_hash["kn_hash"]
 
         #Step 3: Get the latest knowledge and prompt hashes stored:
@@ -86,7 +98,9 @@ class GetQuestionBankTool:
         hard_prompt_hash = hashes.get["prompt_hash"]["hard"]
 
         #Checking the freshness by comparing the hashes:
-        #If the question bank is fresh, return the bank:
+        #If the question bank is fresh, the bucket bank will also be fresh. 
+        # Because bucket bank is created on top of question bank.
+        # Return the question bank and bucket details:
         if (kn_hashes == knowledge_hash 
             and existing_qsBank.existing_hash["easy"] == easy_prompt_hash 
             and existing_qsBank.existing_hash["medium"] == medium_prompt_hash
@@ -95,9 +109,10 @@ class GetQuestionBankTool:
             return GetQSBankResponse(topic_id=request.topic_id,
                                      status=QSBankStatus.READY,
                                      qs_bank=qs_bank,
+                                     bucket_bank=bucket_bank,
                                      job_id=None,
                                      eta_in_secs=None,
-                                     message="Question Bank is fresh!"
+                                     message="Question Bank and Buckets are fresh!"
                                      )
 
         #Scenario 3: If The question bank is stale (i.e. the hashes dont match), then regenerate the question bank:
@@ -116,6 +131,7 @@ class GetQuestionBankTool:
         return GetQSBankResponse(topic_id=request.topic_id,
                                 status=QSBankStatus.REGENERATING,
                                 qs_bank=None,
+                                bucket_bank=None,
                                 job_id=job.get("job_id"),
                                 eta_in_secs=job.get("eta_seconds"),
                                 message=(

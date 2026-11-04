@@ -20,7 +20,8 @@ class GetQSBankRequest(BaseModel):
 class GetQSBankResponse(BaseModel):
     topic_id : str = Field(description="The Topic ID for which we are quering MCP for Question Bank")
     status : QSBankStatus = Field(description="The status of question bank for the topic id")
-    qs_bank : dict[str, Any] | None = Field(default=None, description="The Topic ID for which we are quering MCP for Question Bank")
+    qs_bank : dict[str, Any] | None = Field(default=None, description="Question Bank")
+    bucket_bank : dict[str, Any] | None = Field(default=None, description="Bucket Bank")
     message : str | None = Field(default=None, description="The message from the MCP")
     error : str | None = Field(default=None, description="The error message from the MCP")
     job_id : str | None = Field(default=None, description="The id of the background job running internally.")
@@ -36,6 +37,7 @@ class CreateQSBankResponse(BaseModel):
     topic_id : str = Field(description="The Topic ID for which we are quering MCP for Question Bank")
     status : QSBankStatus = Field(description="The status of question bank for the topic id")
     qs_bank : dict[str, Any] | None = Field(default=None, description="The Topic ID for which we are quering MCP for Question Bank")
+    bucket_bank : dict[str, Any] | None = Field(default=None, description="Bucket Bank")
     message : str | None = Field(default=None, description="The message from the MCP")
     error : str | None = Field(default=None, description="The error message from the MCP")
     job_id : str | None = Field(default=None, description="The id of the background job running internally.")
