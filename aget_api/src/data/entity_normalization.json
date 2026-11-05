@@ -1,25 +1,202 @@
 
 {
+    "normalization" : [{
 
-    "logit model": "logistic regression",
+                        "mle": "maximum likelihood estimation",
 
-    "logistic model": "logistic regression",
+                        "maximum-likelihood estimation": "maximum likelihood estimation",
 
-    "mle": "maximum likelihood estimation",
+                        "cross entropy": "cross-entropy loss",
 
-    "cross entropy": "cross-entropy loss",
+                        "irls": "iteratively reweighted least squares",
 
-    "irls": "iteratively reweighted least squares",
+                        "chi square": "chi-square",
 
-    "chi square": "chi-square",
+                        "chisquare": "chi-square",
 
-    "chisquare": "chi-square",
+                        "log loss": "cross-entropy loss",
 
-    "logit function": "logistic regression",
+                        "logit regression" : "logistic regression",
 
-    "log loss": "cross-entropy loss",
+                        "logistic regression model": "logistic regression",
 
-    "logit regression" : "logistic regression"
+                        "l" : "loss",
+
+                        "ℓ" : "loss",
+
+                        "p_" : "probability",
+
+                        "p" : "probability",
+
+                        "pr" : "probability",
+
+                        "x i" : "independent variable",
+
+                        "y i" :"dependent variable",
+                        
+                        "xi" : "independent variable",
+
+                        "yi" :"dependent variable",
+
+                        "xk" : "independent variable",
+
+                        "yk" :"dependent variable",
+
+                        "x k" : "independent variable",
+
+                        "y k" :"dependent variable",
+
+                        "x variable" : "independent variable",
+
+                        "y variable" :"dependent variable",
+
+                        "y_" : "dependent variable",
+
+                        "ln" : "natural logarithm",
+
+                        "w" : "weight vector",
+
+                        "beta parameters" : "beta",
+
+                        "β 1" : "beta",
+
+                        "b parameters" : "model parameters",
+
+                        "μ" : "mu",
+
+                        "π" : "pi"
+                    }],
+    
+    "plural" : [{
+
+                    "independent variables": "independent variable",
+
+                    "dependent variables":  "dependent variable",
+
+                    "parameters": "parameter",
+
+                    "coefficients": "coefficient",
+
+                    "probabilities" : "probability",
+
+                    "regression coefficients" : "regression coefficient"
+                }],
+
+    "entity_stopwords" : [
+    
+                            "ranging",
+                            "between",
+                            "greater",
+                            "less",
+                            "equal",
+                            "approximately",
+                            "roughly",
+                            "around",
+                            "about",
+
+                            "that",
+                            "which",
+                            "where",
+                            "whose",
+                            "when",
+
+                            "value",
+                            "values",
+                            "example",
+                            "examples",
+                            "detail",
+                            "details",
+                            "case",
+                            "cases",
+                            "instance",
+                            "instances",
+
+                            "result",
+                            "results",
+                            "output",
+                            "outputs",
+                            "input",
+                            "inputs",
+                            "data",
+                            "information",
+
+                            "consisting",
+                            "containing",
+                            "including",
+                            "representing",
+                            "corresponding",
+                            "observed",
+                            "given",
+                            "certain",
+                            "various",
+
+                            "see",
+                            "figure",
+                            "table",
+                            "section",
+                            "chapter",
+                            "background",
+                            "definition",
+
+                            "exam",
+                            "study",
+                            "studying",
+                            "hours",
+                            "customer",
+                            "patient",
+                            "homeowner",
+                            "voter",
+                            "pass",
+                            "fail",
+
+                            "age",
+                            "sex",
+                            "income",
+                            "race",
+                            "cases",
+                            "if"
+                        ],
+
+
+    "placeholder_variables" :   [
+                                    "a", "b",
+                                    "e", "f",
+                                    "x", "y", "z",
+                                    "p", "q",
+                                    "i", "j", "k", "n", "m",
+                                    "t"
+                                ],
+
+    "latex_commands" : [
+                            "frac",
+                            "left",
+                            "right",
+                            "text",
+                            "mathrm",
+                            "mathbf",
+                            "mathcal",
+                            "operatorname",
+                            "prod",
+                            "begin",
+                            "text",
+                            "to",
+                            "end",
+                            "ell",
+                            "cases",
+                            "if"
+                        ],
+
+
+    "LATEX_MAP" : {
+                    "\\beta": "beta",
+                    "\\mu": "mu",
+                    "\\sigma": "sigma",
+                    "\\theta": "theta",
+                    "\\alpha": "alpha",
+                    "\\gamma": "gamma",
+                    "\\pi": "pi"
+                }
+
 
         
 }

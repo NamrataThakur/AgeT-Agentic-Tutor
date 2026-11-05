@@ -21,9 +21,10 @@ if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
 from graphRag.retriever import Retriever
+from db.mongo import MongoDb
 
 class CustomRetrieval:
-    def __init__(self,  db : MongoClient,  model_type = 'openai', k : int= 20, similarity_threshold : float = 0.3):
+    def __init__(self,  db : MongoDb,  model_type = 'openai', k : int= 20, similarity_threshold : float = 0.3):
         self.db = db
         self.ret = Retriever(embed_model_type=model_type, db = self.db)
         self.ret.get_vectorstore()
