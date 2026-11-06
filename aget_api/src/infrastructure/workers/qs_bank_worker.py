@@ -1,4 +1,7 @@
-#This file handles the background task co-ordination. It checks 
+# This file handles the background task co-ordination. It checks 
+#           Question bank generated, concepts validated, questions bucketed, 
+#           sparse buckets regenerated, and global bucket inventory verified
+#       ALL within "create_qs_bank".
 
 import os
 import sys

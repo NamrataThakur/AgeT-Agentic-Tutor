@@ -21,9 +21,10 @@ if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
 from config.settings import settings
+from db.mongo import MongoDb
 
 class TopicPacketCreation:
-    def __init__(self, db: MongoClient, top_neighbours : int = 10, min_score_2hop : float = 0.2,
+    def __init__(self, db: MongoDb, top_neighbours : int = 10, min_score_2hop : float = 0.2,
                  max_strong_2hop : int = 5, max_weak_2hop : int = 3, min_score_3hop : float = 0.08,
                  max_strong_3hop : int = 3, max_weak_3hop : int = 2):
         
