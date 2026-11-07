@@ -21,8 +21,10 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
+from config.settings import settings
+
 class ReRanker:
-    def __init__(self, reranker_model_name = "BAAI/bge-reranker-base", k : int = 20) -> list:
+    def __init__(self, reranker_model_name = settings.MODEL_NAME_RERANKER, k = settings.RERANKER_K) -> list:
         self.reranker = CrossEncoder(model_name_or_path=reranker_model_name)
         self.top_k = k
         

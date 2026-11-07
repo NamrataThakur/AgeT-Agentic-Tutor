@@ -17,9 +17,10 @@ if parent_dir not in sys.path:
 
 from data_models.models import Topics, TopicsFactory
 from pymongo import MongoClient
+from db.mongo import MongoDb
 
 class QueryExpander:
-    def __init__(self, db : MongoClient):
+    def __init__(self, db : MongoDb):
         self.db = db
     
     def get_expanded_query(self, query : str, min_weight : float) -> str:
