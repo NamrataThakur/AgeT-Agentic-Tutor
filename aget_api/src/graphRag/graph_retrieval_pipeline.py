@@ -2,7 +2,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 import warnings
-
+from datetime import datetime
 warnings.filterwarnings("ignore")
 
 import os
@@ -16,7 +16,7 @@ if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
 from typing import List, Literal
-from tools.topic_detection import TopicDetection
+from app_tools.topic_detection import TopicDetection
 from graphRag.retriever import Retriever
 from graphRag.re_ranker import ReRanker
 from knowledge_base.knowledge_base_langchain_retrieval import LangchainRetrieval
@@ -24,6 +24,7 @@ from knowledge_base.knowledge_base_custom_retrieval import CustomRetrieval
 from graphRag.query_expander import QueryExpander
 from graphRag.chunk_expander import ChunkExpander
 from graphRag.topic_packet_creation import TopicPacketCreation
+from pymongo import MongoClient
 from db.mongo import MongoDb
 
 #PIPELINE DESCRIPTION ::::: 
@@ -67,22 +68,23 @@ from db.mongo import MongoDb
 # =============================== GRAPH RAG ENDS ==================================
 
 class GraphRAGPipeline:
-    def __init__(self, model_type : str = "openai", top_k : int = 30, rerank_k : int = 20, 
-                                                    chunk_expand_k : int = 10, #Top 'k' chunks selected out of re-ranked results as seed
-                                                    chunk_expand_n : int = 15, #Top 'n' chunks added as a part of chunk expansion 
-                                                    similarity_threshold : float = 0.7,
-                                                    edge_min_weight : float = 0.3,
-                                                    top_entity_neighbours : int = 10,
-                                                    min_score_2hop : float = 0.2, 
-                                                    max_strong_2hop : int = 5, max_weak_2hop : int = 3,
-                                                    min_score_3hop : float = 0.2,
-                                                    max_strong_3hop : int = 3, max_weak_3hop : int = 2):
+    def __init__(self, db : MongoDb, model_type : str = "openai", top_k : int = 30, rerank_k : int = 20, 
+                            chunk_expand_k : int = 10, #Top 'k' chunks selected out of re-ranked results as seed
+                            chunk_expand_n : int = 15, #Top 'n' chunks added as a part of chunk expansion 
+                            similarity_threshold : float = 0.7,
+                            edge_min_weight : float = 0.3,
+                            top_entity_neighbours : int = 10,
+                            min_score_2hop : float = 0.2, 
+                            max_strong_2hop : int = 5, max_weak_2hop : int = 3,
+                            min_score_3hop : float = 0.2,
+                            max_strong_3hop : int = 3, max_weak_3hop : int = 2,
+                            ):
         
         self.topic_detector = TopicDetection()
 
         #Langchain based retrieval:
         #self.retriever = LangchainRetrieval(model_type=model_type, k=top_k, similarity_threshold= similarity_threshold )
-        self.db = MongoDb()
+        self.db = db #MongoDb()
 
         #Custom Retrieval:
         self.custom_retriever = CustomRetrieval(model_type=model_type, k=top_k, 
@@ -150,6 +152,7 @@ class GraphRAGPipeline:
             #Step 5: Topic Packets Creation:
             topic_packets = self.topic_packet.topic_packet_creation_pipeline(chunks=expanded_docs)
             topic_packets["topic_id"] = topic.id
+            topic_packets["created_at"] = datetime.today()
 
         return topic_packets
     
