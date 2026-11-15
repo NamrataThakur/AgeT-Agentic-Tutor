@@ -19,8 +19,10 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
+from db.mongo import MongoDb
+
 class ChunkExpander:
-    def __init__(self, db : MongoClient, top_k : int = 5, expanded_chunk_length : int = 15):
+    def __init__(self, db : MongoDb, top_k : int = 5, expanded_chunk_length : int = 15):
         self.db = db
 
        #How many seed chunks:
