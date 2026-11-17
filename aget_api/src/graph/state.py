@@ -16,6 +16,7 @@ if parent_dir not in sys.path:
 from data_models.conversation_context import ConversationContext
 from data_models.execution_plan import ExecutionPlan
 from data_models.execution_result import ExecutionResult
+from graph.resume_state import ResumeState
 
 from config.constants import CONVERSATION_EVENT
 
@@ -40,6 +41,9 @@ class AgentState(TypedDict, total = False):
     #---- After Input Processing -----:
     user_input : str
 
+    #---- Resume Graph After Pausing Interview -----:
+    resume_state : ResumeState | None
+
     #---- Intent Detector -------------
     topic : Optional[str]
     topic_switched : bool | None = None
@@ -55,5 +59,8 @@ class AgentState(TypedDict, total = False):
     execution_result : ExecutionResult | None = None
 
     response : str #Memory Update Node will populate this field
+
+    #---------Background Executor Job Details------------------- 
+    
 
 
