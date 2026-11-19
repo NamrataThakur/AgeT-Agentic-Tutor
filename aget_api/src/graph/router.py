@@ -13,7 +13,6 @@ if parent_dir not in sys.path:
 
 from graph.state import AgentState
 from data_models.session_memory import InterviewState
-from data_models.execution_result import AgentType
 
 def topic_router(state : AgentState) -> Command[Literal["knowledge_service", "planner"]]:
     # It will check if the topic has changed between turns. 
@@ -35,4 +34,46 @@ def decision_router(state : AgentState):
         return "continue"
 
     raise ValueError(f"Unsupported interview state for decision routing: {current_interview_state}")
+
+
+def resume_router(state : AgentState):
+    # It will check if the interview was paused and hence needs to be resumed or it follows a general workflow. 
+    # If paused, this information will be saved in the "resume_state" field. 
+    # If the "resume_node" is True, it will called "Knowledge Service". Else it will route to "Intent Detection" for the general workflow:
+    resume_state = state["resume_state"]
+    
+    if resume_state and resume_state.status == "READY":
+        #Knowledge Service will mark the status as "CONSUMED" in the next call when the graph will resume:
+        return "resume"
+
+    elif resume_state and resume_state.status == "FAILED":
+        #If the background job has failed:
+        return "failed"
+    
+    else:
+        return "general_workflow"
+
+
+def pause_router(state: AgentState):
+
+    resume_state = state["resume_state"]
+    if resume_state:
+        #The graph will end but the interview will be paused:
+
+        return "pause"
+
+    #The graph and the interview will continue:
+    return "ready"
+
+
+def failure_check_router(state: AgentState):
+
+    resume_state = state["resume_state"]
+    if resume_state:
+        #The graph will end but the interview will be paused:
+
+        return "agent_failure"
+
+    #The graph and the interview will continue:
+    return "agent_success"
     
