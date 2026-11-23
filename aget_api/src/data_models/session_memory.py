@@ -19,9 +19,20 @@ class InterviewState(str, Enum):
     READY_FOR_NEXT_ACTION = "ready_for_action"
     INTERVIEW_STARTED = "interview_started"
 
+
+class InterviewStatus(str, Enum):
+    INITIALIZING = "initializing"
+    WAITING_FOR_QS_BANK = "waiting_for_qs_bank"
+    IN_PROGRESS = "in_progress"
+    COMPLETED = "completed"
+
+
 class SessionMemory(BaseModel):
 
+    user_id : str = Field(default=None, description="Unique ID for the user")
     interview_id : str | None = Field(default=None, description="Unique Interview ID for a particular session")
+
+    #--- Same as the "topic" present in the AgentState ---:
     current_topic : str | None = Field(default=None, description="Topic used in the current interview state")
     current_qs : str | None = Field(default=None, description="Text of Question Asked") 
     current_qs_metadata : Dict | None = Field(default=None, description="All details of the Question Asked") 
@@ -34,5 +45,9 @@ class SessionMemory(BaseModel):
     last_execution_result : ExecutionResult | None = Field(default=None, description="Result of the most recently executed specialized agent")
 
     current_bucket : str | None = Field(default=None, description="Bucket name in which the current question belong")
-    interview_status : str | None = Field(default=None, description="Whether the interview is ongoing or completed.")
+
+    #Interview Status is the overall status of the interview across turns:
+    interview_status : InterviewStatus | None = Field(default=None, description="Whether the interview is ongoing or completed.")
+
+    #Interview State is handling internal state of the interview as it moves from one agent to another:
     interview_state : InterviewState | None = Field(default=None, description="Current State of Interview")

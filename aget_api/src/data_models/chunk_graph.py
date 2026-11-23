@@ -9,8 +9,8 @@ class SemanticChunk(BaseModel):
     """A class representing relations between a pair of chunks.
 
     Args:
-        source_chunk (str): Source Entity Name
-        target_chunk (str): Target Entity Name
+        source_chunk (str): Source Chunk ID
+        target_chunk (str): Target Chunk ID
         shared_entities (List[str]): List of common entities between the source and target chunk
         similarity (float): Weight of the edge between the source and target chunk
 

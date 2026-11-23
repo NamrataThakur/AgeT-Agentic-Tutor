@@ -1,5 +1,5 @@
 from typing import List, Literal, Dict, Set
-
+from datetime import datetime
 from pydantic import BaseModel, Field, ConfigDict
 from enum import Enum
 
@@ -87,6 +87,7 @@ class TopicPacket(BaseModel):
     """ 
 
     topic_id : str = Field(description="Unique ID of the topic")
+    created_at : datetime = Field(description="Date of creation")
     knowledge_hash : str = Field(description="Hash value of the KB used to create this packet")
     core_concepts : List[str] = Field(description="Unique Entities present in the supporting chunks")
     supporting_chunks : List[str] = Field(description="Text of the supporting chunks")

@@ -29,10 +29,13 @@ class Question(BaseModel):
     question : QuestionGen
 
     difficulty : str = Field(description="Difficulty level of the question. Options: 'easy', 'medium' or 'hard' ")
+    bucket_id : Optional[str] = Field(default=None, description="Unique Id of the bucket")
     bucket_name: Optional[str] = None
     generator_version: str = Field(description="LLM used to generate this question")
     created_at : datetime = Field(description="Date of creation")
-    usage : dict 
+    
+    #Usage is not tracked here because this is user specific, whereas question bank is user agnostic
+    #usage : dict 
 
     semantic_neighbours : List = Field(description="Question IDs neighbours to this question.")
 
