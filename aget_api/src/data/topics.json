@@ -1,7 +1,5 @@
 
 {
-    "logistic_regression": "Logistic Regression",
-    "clustering": "Clustering",
-    "linear_regression": "Linear Regression"
-    
+    "logistic_regression": ["Logistic Regression", ["supervised", "classification", "lr", "log reg",
+                                                    "logistic regression"]]
 }

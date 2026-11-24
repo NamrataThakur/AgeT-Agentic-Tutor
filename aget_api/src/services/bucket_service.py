@@ -116,11 +116,12 @@ class BucketService:
 
     #Step 17: If any bucket-level is below threshold, for the unhealthy buckets, fetch from topic_packets the core concepts associated with each such buckets. 
     #Step 18: Trigger bucket regeneration for them: This will update the Question Bank:
-    #Step 19: Check Bucket Health by fetching from DB (again): Validate that all buckets are healthy:
-    #Step 20: Return this validated global bucket collection:
-    #Step 21: Fetch from DB the latest updated question bank:
-    #Step 22: Save Updated Question Bank in local for downstream tasks: 
-    async def bucket_regeneration(self, bucket_health : Dict, topic_packets : Dict | None, topic : str | None):
+    #Step 19: Update Global Bucket Collection with the qs generated for each bucket-level count:
+    #Step 20: Check Bucket Health by fetching from DB (again): Validate that all buckets are healthy:
+    #Step 21: Return this validated global bucket collection:
+    #Step 22: Fetch from DB the latest updated question bank:
+    #Step 23: Save Updated Question Bank in local for downstream tasks: 
+    async def bucket_regeneration(self, bucket_health : Dict, topic_packets : Dict | None, topic : str ):
         """
         Bucket Regeneration can happen either during Question Bank Creation or during maintanence check:
         """
@@ -129,10 +130,15 @@ class BucketService:
         unhealthy_bucket = bucket_health["unhealthy_buckets"]
 
         if topic_packets is None:
+            print("Topic Packet is not provided. Fetching from DB..!")
             topic_packets = self.fetch_topic_packet(topic=topic)
 
+        #Step 18: Trigger bucket regeneration for them: This will update the Question Bank:
+        regenerated_buckets = self.bucket_regenerator.bucket_regeneration_pipeline(topic_packets=topic_packets,
+                                                                                   bucket_info=unhealthy_bucket)
         
-        return
+        
+        return regenerated_buckets
     
 
     
