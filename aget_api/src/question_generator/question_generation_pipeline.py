@@ -284,7 +284,7 @@ class QuestionFullGenerationPipeline:
         easy_qsBucket = self.add_qs_buckets(questions_bank=easy_qsBank, bucket_info = entity_buckets)
         print(f"Total EASY Questions Generated : {len(easy_qsBucket)}")
 
-        # #Step 13: Insert into DB:
+        #Step 13: Insert into DB:
         easy_qs_model = QuestionAllBatch.model_validate(obj={"question_batch" : easy_qsBucket})
         self.db.ingest_question_bank(qs_bank=easy_qs_model.question_batch)
         print("Question Bank for Easy Questions Inserted in MongoDB Successfully..!")

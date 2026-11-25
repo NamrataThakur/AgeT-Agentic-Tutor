@@ -46,9 +46,18 @@ class Settings(BaseSettings):
     BM25_WEIGHT : float = 0.5 
     CHUNK_EDGE_THRESHOLD : float = 0.72
     QUESTION_SIM_THRESHOLD : float = 0.8
+    CONCEPT_SIM_THRESHOLD : float = 0.9
 
     #---------- Question Generation -------------
     NUM_QUESTIONS : int = 10
+
+    #---------- Bucket ReGeneration -------------
+    BUCKET_MIN_THRESHOLD : int = 5
+    BUCKET_MAX_COUNT : int = 15
+    CONCEPT_FILTERING_THRESHOLD : float = 0.65
+    CHUNK_THRESHOLD : float = 0.55
+    PC_WEIGHTAGE : float = 0.7
+    SC_WEIGHTAGE : float = 0.3
 
     # --- Paths Configuration ---
     #EVALUATION_DATASET_FILE_PATH: Path = Path("data/evaluation_dataset.json")
