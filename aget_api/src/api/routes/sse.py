@@ -1,4 +1,4 @@
-from fastapi import APIRouter,Request
+from fastapi import APIRouter,Request, Depends
 
 import json
 import os
@@ -14,13 +14,13 @@ if parent_dir not in sys.path:
 from application.interview_service import InterviewService
 from sse_starlette.sse import EventSourceResponse
 from infrastructure.server_sent_events.sse_manager import ServerSentEventManager
+from api.container.application_container import ApplicationContainer
+from api.dependency import get_container
 
 router = APIRouter(prefix="/events", tags=["events"])
 
-sse_manager = ServerSentEventManager()
 
-
-async def event_generator(interview_id, queue, request : Request):
+async def event_generator(interview_id, queue, request : Request, container : ApplicationContainer):
 
     try:
         while True:
@@ -34,16 +34,22 @@ async def event_generator(interview_id, queue, request : Request):
                 "data" : json.dumps(result["data"])
             }
     finally:
-        await sse_manager.disconnect(interview_id=interview_id, queue=queue)
+        await container.sse_manager.disconnect(interview_id=interview_id, queue=queue)
+
 
 
 @router.get("/{interview_id}")
-async def interview_starts(interview_id : str, request: Request):
+async def interview_starts(interview_id : str, request: Request, 
+                            container : ApplicationContainer = Depends(get_container)):
+
 
     #Start the SSE HTTP Connection:
-    queue = await sse_manager.connect(interview_id=interview_id)
+    queue = await container.sse_manager.connect(interview_id=interview_id)
 
     return EventSourceResponse(event_generator(interview_id=interview_id, 
-                                               queue=queue, 
-                                               request=request))
+                                            queue=queue, 
+                                            request=request,
+                                            container=container))
+
+
 
